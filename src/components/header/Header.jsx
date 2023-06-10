@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeTheme } from '../../themeSlice'
 
-import LocationsList from '../locationsList/locationsList'
+import LocationsList from '../locationsList/LocationsList'
 
 import './header.scss'
 
