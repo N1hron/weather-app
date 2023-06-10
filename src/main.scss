@@ -1,0 +1,21 @@
+:root {
+    --main-color: #1d232f;
+    --secondary-color: #212733;
+    --additional-color: #272b68;
+    --additional-color-hover: #24285e;
+    --additional-color-active: #202353;
+    --border-color: #FFFFFF;
+    --font-color: #FFFFFF;
+    --icon-color: #FFFFFF;
+}
+
+* {
+    font-family: Urbanist, sans-serif;
+}
+
+#root {
+    box-sizing: border-box;
+    background-color: var(--main-color);
+    height: 100vh;
+    padding: 30px;
+}
