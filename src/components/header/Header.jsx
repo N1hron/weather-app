@@ -1,6 +1,8 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeTheme } from '../../themeSlice'
+
+import LocationsList from '../locationsList/locationsList'
 
 import './header.scss'
 
@@ -12,7 +14,8 @@ const themesData = {
         additionalColorHover: '#424561',
         additionalColorActive: '#3b3d56',
         borderColor: '#484b6a',
-        fontColor: '#484b6a',
+        fontSecondaryColor: '#FFFFFF',
+        fontMainColor: '#484b6a',
         iconColor: '#484b6a'
     },
     'dark': {
@@ -22,7 +25,8 @@ const themesData = {
         additionalColorHover: '#888888',
         additionalColorActive: '#757575',
         borderColor: '#adadad',
-        fontColor: '#dadada',
+        fontMainColor: '#dadada',
+        fontSecondaryColor: '#393838',
         iconColor: '#dadada'
     },
     'dark-blue': {
@@ -32,15 +36,18 @@ const themesData = {
         additionalColorHover: '#24285e',
         additionalColorActive: '#202353',
         borderColor: '#FFFFFF',
-        fontColor: '#FFFFFF',
+        fontSecondaryColor: '#FFFFFF',
+        fontMainColor: '#FFFFFF',
         iconColor: '#FFFFFF'
     }
 }
 
 export default function Header() {
+    const [inputValue, setInputValue] = useState('');
     const currentTheme = useSelector(state => state.theme.currentTheme)
     const dispatch = useDispatch()
     const themeListRef = useRef(null)
+    const locationsRef = useRef(null)
 
     function onThemeChange(theme) {
         if(currentTheme != theme) {
@@ -52,6 +59,7 @@ export default function Header() {
 
     function onButtonClick() {
         themeListRef.current.classList.toggle('header__theme-select_active')
+        locationsRef.current.classList.toggle('locations_short')
     }
 
     function applyTheme(theme) {
@@ -63,7 +71,8 @@ export default function Header() {
         root.style.setProperty('--additional-color-hover', themeData.additionalColorHover)
         root.style.setProperty('--additional-color-active', themeData.additionalColorActive)
         root.style.setProperty('--border-color', themeData.borderColor)
-        root.style.setProperty('--font-color', themeData.fontColor)
+        root.style.setProperty('--font-main-color', themeData.fontMainColor)
+        root.style.setProperty('--font-secondary-color', themeData.fontSecondaryColor)
         root.style.setProperty('--icon-color', themeData.iconColor)
     }
 
@@ -74,7 +83,7 @@ export default function Header() {
             </div>
             <div className='header__logo'>Weather App</div>
             <form className='header__form'>
-                <input type='text' placeholder='Enter your location'/>
+                <input type='text' placeholder='Enter your location' value={inputValue} onChange={(event) => setInputValue(event.target.value)}/>
                 <button>Done</button>
             </form>
             <div ref={themeListRef} className='header__theme-select'>
@@ -89,6 +98,7 @@ export default function Header() {
                     <li><button onClick={() => onThemeChange('light')} style={{backgroundColor: '#FFFFFF'}}></button></li>
                 </ul>
             </div>
+            <LocationsList ref={locationsRef} inputValue={inputValue}/>
         </div>
     )
 }

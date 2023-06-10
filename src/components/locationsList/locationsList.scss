@@ -1,0 +1,50 @@
+.locations {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    height: 60px;
+    background-color: var(--secondary-color);
+    top: calc(100% + 16px);
+    left: 0;
+    margin: 0;
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+     
+    &__content {
+        overflow: scroll;
+        scrollbar-width: none;
+        gap: 20px;
+        transition: all 0.05s;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        border-radius: 5px;
+    }
+
+    &__item {
+        color: var(--font-secondary-color);
+        font-size: 20px;
+        cursor: pointer;
+        background-color: var(--additional-color);
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: all 0.1s;
+        flex-shrink: 0;
+
+        &:hover {
+            background-color: var(--additional-color-hover);
+        }
+
+        &:active {
+            background-color: var(--additional-color-active);
+        }
+    }
+
+    &_short {
+        width: calc(100% - 100px);
+    }
+}
