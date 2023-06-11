@@ -32,5 +32,7 @@ const locationsSlice = createSlice({
 })
 
 const { actions, reducer } = locationsSlice
+const { selectAll } = locationsAdapter.getSelectors(state => state.locations)
 
 export default reducer
+export { selectAll as selectAllLocations };

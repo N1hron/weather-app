@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeTheme } from '../../themeSlice'
 
@@ -49,10 +49,19 @@ export default function Header() {
     const themeListRef = useRef(null)
     const locationsRef = useRef(null)
 
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme')
+        if(savedTheme) {
+            applyTheme(savedTheme)
+            dispatch(changeTheme(savedTheme))
+        }
+    }, [])
+
     function onThemeChange(theme) {
         if(currentTheme != theme) {
             dispatch(changeTheme(theme))
             applyTheme(theme)
+            localStorage.setItem('theme', theme)
         }
         onButtonClick()
     }

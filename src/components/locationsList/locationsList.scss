@@ -11,6 +11,17 @@
     border-radius: 15px;
     display: flex;
     align-items: center;
+    transition: all 0.1s;
+    transform-origin: top center;
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+
+    &_active {
+        transform: scale(100%);
+        opacity: 1;
+        visibility: visible;
+    }
      
     &__content {
         overflow: scroll;
@@ -23,10 +34,15 @@
         margin: 0;
         padding: 5px;
         border-radius: 5px;
+    }
 
-        // &::-webkit-scrollbar {
-        //     display: none;
-        // }
+    &__message {
+        position: absolute;
+        padding: 5px 10px;
+        font-size: 35px;
+        color: var(--font-main-color);
+        text-align: center;
+        width: 100%;
     }
 
     &__item {
