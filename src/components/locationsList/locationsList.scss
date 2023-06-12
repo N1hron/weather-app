@@ -4,7 +4,7 @@
     box-sizing: border-box;
     height: 60px;
     background-color: var(--secondary-color);
-    top: calc(100% + 16px);
+    top: calc(100% + 15px);
     left: 0;
     margin: 0;
     padding: 5px;
@@ -39,10 +39,13 @@
     &__message {
         position: absolute;
         padding: 5px 10px;
+        left: 0;
         font-size: 35px;
         color: var(--font-main-color);
         text-align: center;
         width: 100%;
+        padding: 0;
+        margin: 0;
     }
 
     &__item {
@@ -66,6 +69,6 @@
     }
 
     &_short {
-        width: calc(100% - 100px);
+        width: calc(100% - 175px);
     }
 }

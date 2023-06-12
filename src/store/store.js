@@ -1,10 +1,10 @@
 import { configureStore,  } from "@reduxjs/toolkit"
-import themeReducer from '../themeSlice'
+import appearanceReducer from '../appearanceSlice'
 import locationsReducer from '../components/locationsList/locationsSlice'
 
 const store = configureStore({
     reducer: {
-        theme: themeReducer,
+        appearance: appearanceReducer,
         locations: locationsReducer
     },
     devTools: true

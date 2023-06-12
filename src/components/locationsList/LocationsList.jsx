@@ -7,6 +7,7 @@ import './locationsList.scss';
 const LocationsList = forwardRef(function LocationsList({inputValue, setInputValue}, ref) {
     const dispatch = useDispatch()
     const locations = useSelector(selectAllLocations)
+    const themesListOpen = useSelector(state => state.appearance.themesListOpen)
     const listData = useMemo(() => createListData(locations), [locations])
 
     useEffect(() => {
@@ -41,8 +42,9 @@ const LocationsList = forwardRef(function LocationsList({inputValue, setInputVal
 
     const listItems = useMemo(createListItems, [listData, inputValue]);
 
+    const className = `locations${inputValue ? ' locations_active' : ''}${themesListOpen ? ' locations_short' : ''}`
     return (
-        <div ref={ref} className={`locations${inputValue ? ' locations_active' : ''}`}>
+        <div ref={ref} className={className}>
             <ul className='locations__content'>
                 {listItems.length ? listItems : <p className='locations__message'>No matches</p>}
             </ul>

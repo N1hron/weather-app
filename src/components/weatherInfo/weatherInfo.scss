@@ -1,0 +1,13 @@
+.weather {
+    padding: 15px 0;    
+    transition: all 0.1s;
+    transform: scale(0);
+    opacity: 0; 
+    visibility: hidden;    
+
+    &_active {
+        transform: scale(100%);
+        opacity: 1;
+        visibility: visible;
+    }
+}
