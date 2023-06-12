@@ -8,6 +8,37 @@
     justify-content: space-between;
     padding: 30px 30px 20px;
 
+    &__geolocation {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        z-index: 1;
+
+        p {
+            color: var(--font-main-color);
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        svg {
+            cursor: pointer;
+            transition: all 0.1s;
+
+            &:focus-visible {
+                transform: scale(110%);
+                outline: auto;
+            }
+
+            &:hover {
+                transform: scale(110%);
+            }
+
+            &:active {
+                transform: scale(100%);
+            }
+        }
+    }
+
     &__themes-list {
         position: absolute;
         top: calc(100% + 40px);
@@ -119,56 +150,33 @@
         z-index: 0;
     }
 
-    &__form {
+    &__location {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__input {
+        box-sizing: border-box;
+        height: 35px;
+        max-width: 200px;
+        border: 1px solid var(--border-color);
+        background-color: transparent;
+        border-radius: 13px;
+        outline: none;
+        font-weight: 700;
+        font-size: 14px;
+        color: var(--font-main-color);
+        padding: 0 10px;
+        background-repeat: no-repeat;
+        background-position: 5px 3px;
+        background-size: 30px;
         position: relative;
         z-index: 1;
 
-        button {
-            background-color: var(--additional-color);
-            border-radius: 13px;
-            color: var(--font-secondary-color);
-            font-weight: 700;
-            border: none;
-            height: 35px;
-            margin-left: 20px;
-            cursor: pointer;
-            padding: 0 20px;
-            transition: all 0.15s;
-
-            &:focus-visible {
-                outline: auto;
-                background-color: var(--additional-color-hover);
-            }
-
-            &:hover {
-                background-color: var(--additional-color-hover);
-            }
-
-            &:active {
-                background-color: var(--additional-color-active);
-            }
-        }
-
-        input {
-            box-sizing: border-box;
-            height: 35px;
-            max-width: 200px;
-            border: 1px solid var(--border-color);
-            background-color: transparent;
-            border-radius: 13px;
-            outline: none;
-            font-weight: 700;
-            font-size: 14px;
+        &::placeholder {
             color: var(--font-main-color);
-            padding: 0 10px;
-            background-repeat: no-repeat;
-            background-position: 5px 3px;
-            background-size: 30px;
-
-            &::placeholder {
-                color: var(--font-main-color);
-                opacity: 1;
-            }
+            opacity: 1;
         }
     }
 

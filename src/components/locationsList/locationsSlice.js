@@ -3,7 +3,8 @@ import { createSlice, createEntityAdapter, createAsyncThunk } from "@reduxjs/too
 const locationsAdapter = createEntityAdapter()
 
 const initialState = locationsAdapter.getInitialState({
-    status: 'idle'
+    status: 'idle',
+    currentLocation: ''
 });
 
 export const fetchLocations = createAsyncThunk(
@@ -19,7 +20,9 @@ export const fetchLocations = createAsyncThunk(
 const locationsSlice = createSlice({
     name: 'locations',
     initialState,
-    reducers: {},
+    reducers: {
+        setCurrentLocation: (state, action) => {state.currentLocation = action.payload}
+    },
     extraReducers: (builder) => {
         builder 
             .addCase(fetchLocations.pending, state => {state.status = 'loading'})
@@ -33,6 +36,7 @@ const locationsSlice = createSlice({
 
 const { actions, reducer } = locationsSlice
 const { selectAll } = locationsAdapter.getSelectors(state => state.locations)
+const { setCurrentLocation } = actions
 
 export default reducer
-export { selectAll as selectAllLocations };
+export { selectAll as selectAllLocations, setCurrentLocation };

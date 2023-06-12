@@ -1,10 +1,10 @@
 import { useEffect, forwardRef, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchLocations, selectAllLocations } from './locationsSlice'
+import { fetchLocations, selectAllLocations, setCurrentLocation } from './locationsSlice'
 
 import './locationsList.scss';
 
-function LocationsList({inputValue}, ref) {
+const LocationsList = forwardRef(function LocationsList({inputValue, setInputValue}, ref) {
     const dispatch = useDispatch()
     const locations = useSelector(selectAllLocations)
     const listData = useMemo(() => createListData(locations), [locations])
@@ -25,10 +25,17 @@ function LocationsList({inputValue}, ref) {
         return locations.filter(location => location.search(regexp) !== -1)
     }
 
+    function onCurrentLocationChange(data) {
+        dispatch(setCurrentLocation(data))
+        setInputValue('')
+    }
+
     function createListItems() {
         if(listData || listData.length) {
             const filteredListData = filterLocations(listData)
-            return filteredListData.slice(0, 20).map((data, i) => <li key={i} tabIndex={0} className='locations__item'>{data}</li>)
+            return filteredListData.slice(0, 20).map((data, i) => {
+                return <li key={i} tabIndex={0} className='locations__item' onClick={() => {onCurrentLocationChange(data)}}>{data}</li>
+            })
         }
     }
 
@@ -41,6 +48,6 @@ function LocationsList({inputValue}, ref) {
             </ul>
         </div>
     )
-}
+})
 
-export default forwardRef(LocationsList);
+export default LocationsList;
