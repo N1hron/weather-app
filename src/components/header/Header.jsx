@@ -85,17 +85,17 @@ export default function Header() {
         root.style.setProperty('--icon-color', themeData.iconColor)
     }
 
-    function getGeolocation() {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    }
+    // function getGeolocation() {
+    //     navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    // }
 
-    function onSuccess(position) {
-        console.log(position)
-    }
+    // function onSuccess(position) {
+    //     console.log(position)
+    // }
 
-    function onError(error) {
-        console.error(error)
-    }
+    // function onError(error) {
+    //     console.error(error)
+    // }
 
     return (
         <div className='header'>
