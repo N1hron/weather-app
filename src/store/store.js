@@ -7,7 +7,7 @@ const store = configureStore({
         appearance: appearanceReducer,
         locations: locationsReducer
     },
-    devTools: import.meta.env.DEV
+    devTools: import.meta.env.DEV || true
 })
 
 export default store
