@@ -1,9 +1,6 @@
 .weather {
-    padding: 15px 0;    
-    transition: all 0.1s;
-    transform: scale(0);
-    opacity: 0; 
-    visibility: hidden;    
+    margin-top: 68px;
+    padding: 15px 0;       
 
     &_active {
         transform: scale(100%);

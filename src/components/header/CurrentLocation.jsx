@@ -1,17 +1,19 @@
 import { useSelector } from "react-redux"
 
 export default function CurrentLocation() {
-    const currentLocation = useSelector(state => state.locations.currentLocation)
+    const locationData = useSelector(state => state.locations.currentLocation)
     const themesListOpen = useSelector(state => state.appearance.themesListOpen)
+
+    const location = Object.keys(locationData).length ? `${locationData.city}, ${locationData.country}` : ''
 
     const className = `
     header__current-location
-    ${currentLocation ? ' header__current-location_active' : ''}
+    ${location ? ' header__current-location_active' : ''}
     ${themesListOpen ? ' header__current-location_short' : ''}`
 
     return (
         <div className={className}> 
-            <p>{currentLocation}</p>
+            <p>{location}</p>
         </div>
     )
 }

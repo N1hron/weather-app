@@ -4,7 +4,8 @@ const locationsAdapter = createEntityAdapter()
 
 const initialState = locationsAdapter.getInitialState({
     status: 'idle',
-    currentLocation: ''
+    currentLocation: {},
+    geographicalCoordinates: ''
 });
 
 export const fetchLocations = createAsyncThunk(
@@ -16,6 +17,14 @@ export const fetchLocations = createAsyncThunk(
         return locations
     }
 )
+
+// export const fetchGeographicalCoordinates = createAsyncThunk(
+//     'locations/getGeographicalCoordinates',
+//     async (country, code) => {
+//         const apiKey = process.env.API_KEY
+//         console.log(apiKey)
+//     }
+// )
 
 const locationsSlice = createSlice({
     name: 'locations',

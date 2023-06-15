@@ -1,0 +1,13 @@
+.locations {
+    &-appear {
+        transform: scale(0);
+        opacity: 0;
+        visibility: 0;
+    }
+
+    &-appear-active {
+        transform: scale(1);
+        opacity: 1;
+        visibility: 1;
+    }
+}

@@ -1,22 +1,21 @@
+@import '../../scss/animations';
+
 .locations {
     position: absolute;
     width: 100%;
     box-sizing: border-box;
-    height: 60px;
+    height: 53px;
     background-color: var(--secondary-color);
     top: calc(100% + 15px);
     left: 0;
     margin: 0;
-    padding: 5px;
+    padding: 0 10px;
     border-radius: 15px;
     display: flex;
     align-items: center;
     transition: all 0.1s;
     transform-origin: top center;
-    transform: scale(0);
-    opacity: 0;
-    visibility: hidden;
-
+    
     &_active {
         transform: scale(100%);
         opacity: 1;
@@ -32,7 +31,7 @@
         display: flex;
         align-items: center;
         margin: 0;
-        padding: 5px;
+        padding: 0;
         border-radius: 5px;
     }
 
@@ -69,6 +68,6 @@
     }
 
     &_short {
-        width: calc(100% - 175px);
+        width: calc(100% - 163px);
     }
 }
