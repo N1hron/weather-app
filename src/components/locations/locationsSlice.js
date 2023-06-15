@@ -21,7 +21,7 @@ export const fetchLocations = createAsyncThunk(
 export const fetchGeographicalCoordinates = createAsyncThunk(
     'locations/getGeographicalCoordinates',
     async ({city, countryCode}) => {
-        const apiKey = import.meta.env.VITE_GEOCODING_API_KEY
+        const apiKey = 'fb892f52993e357f7e4654a5a9bbc648'
         const request = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&limit=1&appid=${apiKey}`)
         const json = await request.json()
         console.log(json)
