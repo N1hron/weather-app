@@ -1,10 +1,19 @@
-import { useSelector } from "react-redux"
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchGeographicalCoordinates } from '../locations/locationsSlice'
 
 export default function CurrentLocation() {
+    const dispatch = useDispatch()
     const locationData = useSelector(state => state.locations.currentLocation)
     const themesListOpen = useSelector(state => state.appearance.themesListOpen)
 
     const location = Object.keys(locationData).length ? `${locationData.city}, ${locationData.country}` : ''
+
+    useEffect(() => {
+        if(location) {
+            dispatch(fetchGeographicalCoordinates({city: locationData.city, countryCode: locationData.countryCode}))
+        }
+    }, [location])
 
     const className = `
     header__current-location

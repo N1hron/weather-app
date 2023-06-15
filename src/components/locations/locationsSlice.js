@@ -5,7 +5,7 @@ const locationsAdapter = createEntityAdapter()
 const initialState = locationsAdapter.getInitialState({
     status: 'idle',
     currentLocation: {},
-    geographicalCoordinates: ''
+    geographicalCoordinates: {}
 });
 
 export const fetchLocations = createAsyncThunk(
@@ -18,13 +18,16 @@ export const fetchLocations = createAsyncThunk(
     }
 )
 
-// export const fetchGeographicalCoordinates = createAsyncThunk(
-//     'locations/getGeographicalCoordinates',
-//     async (country, code) => {
-//         const apiKey = process.env.API_KEY
-//         console.log(apiKey)
-//     }
-// )
+export const fetchGeographicalCoordinates = createAsyncThunk(
+    'locations/getGeographicalCoordinates',
+    async ({city, countryCode}) => {
+        const apiKey = import.meta.env.VITE_GEOCODING_API_KEY
+        const request = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&limit=1&appid=${apiKey}`)
+        const json = await request.json()
+        console.log(json)
+        return json
+    }
+)
 
 const locationsSlice = createSlice({
     name: 'locations',
@@ -40,6 +43,10 @@ const locationsSlice = createSlice({
                 locationsAdapter.setAll(state, action.payload)
             })
             .addCase(fetchLocations.rejected, state => {state.status = 'failure'})
+            .addCase(fetchGeographicalCoordinates.fulfilled, (state, action) => {
+                const {lat, lon} = action.payload[0]
+                state.geographicalCoordinates = {lat, lon}
+            })
     }
 })
 
