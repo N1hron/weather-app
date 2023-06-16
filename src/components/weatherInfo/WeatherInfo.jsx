@@ -1,13 +1,12 @@
-import { useSelector } from 'react-redux'
+import DaysList from '../daysList/DaysList'
 
 import './weatherInfo.scss'
 
 export default function WeatherInfo() {
-    const currentLocation = useSelector(state => state.locations.currentLocation)
     
     return (
         <div className='weather'>
-            
+            <DaysList/>
         </div>
     )
 }

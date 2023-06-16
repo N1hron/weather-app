@@ -12,11 +12,13 @@
 
 * {
     font-family: Urbanist, sans-serif;
+    box-sizing: border-box;
 }
 
 #root {
     box-sizing: border-box;
     background-color: var(--main-color);
-    height: 100vh;
+    min-height: 100vh;
+    // height: 100%;
     padding: 30px;
 }

@@ -1,8 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { CSSTransition } from 'react-transition-group'
 import { fetchGeographicalCoordinates } from '../locations/locationsSlice'
 
+import '../../scss/animations.scss'
+import './currentLocation.scss'
+
 export default function CurrentLocation() {
+    const nodeRef = useRef(null)
     const dispatch = useDispatch()
     const locationData = useSelector(state => state.locations.currentLocation)
     const themesListOpen = useSelector(state => state.appearance.themesListOpen)
@@ -15,14 +20,15 @@ export default function CurrentLocation() {
         }
     }, [location])
 
-    const className = `
-    header__current-location
-    ${location ? ' header__current-location_active' : ''}
-    ${themesListOpen ? ' header__current-location_short' : ''}`
+    const className = `current-location${themesListOpen ? ' current-location_short' : ''}`
+
+    if(!location) return
 
     return (
-        <div className={className}> 
-            <p>{location}</p>
-        </div>
+        <CSSTransition nodeRef={nodeRef} in={true} appear={true} classNames='current-location' timeout={100}>
+            <div className={className}> 
+                <p>{location}</p>
+            </div>
+        </CSSTransition>
     )
 }

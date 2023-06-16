@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import { selectAllLocations, setCurrentLocation } from './locationsSlice'
 
+import '../../scss/animations.scss'
 import './locations.scss'
 
 export default function LocationsList({inputValue, setInputValue}) {
@@ -10,6 +11,11 @@ export default function LocationsList({inputValue, setInputValue}) {
     const dispatch = useDispatch()
     const locations = useSelector(selectAllLocations)
     const themesListOpen = useSelector(state => state.appearance.themesListOpen)
+
+    function onCurrentLocationChange(data) {
+        dispatch(setCurrentLocation(data))
+        setInputValue('')
+    }
 
     function createListData(locations) {
         let data = []
@@ -25,11 +31,6 @@ export default function LocationsList({inputValue, setInputValue}) {
     function filterLocations(locations) {
         const regexp = new RegExp(inputValue, 'igm');
         return locations.filter(location => location.country.search(regexp) !== -1 || location.city.search(regexp) !== -1)
-    }
-
-    function onCurrentLocationChange(data) {
-        dispatch(setCurrentLocation(data))
-        setInputValue('')
     }
 
     function createListItems(listData) {

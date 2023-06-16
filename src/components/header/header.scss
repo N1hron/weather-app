@@ -1,56 +1,22 @@
 .header {
     position: relative;
-    background-color: var(--secondary-color);
-    min-height: 40px;
-    border-radius: 30px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: calc(100vw - 223px) 148px;
 
-    &__content {
+    &__top {
         position: relative;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
+        background-color: var(--secondary-color);
         gap: 20px;
         padding: 30px 30px 20px;
-    }
-
-    &__current-location {
-        position: absolute;
-        bottom: -68px;
-        left: 0;
-        color: var(--font-main-color);
-        font-size: 30px;
-        text-align: center;
-        background-color: var(--secondary-color);
-        border-radius: 15px;
-        height: 53px;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        transition: all 0.1s;
-        transform-origin: top center;
-
-        transform: scale(0);
-        opacity: 0;
-        visibility: hidden;
-
-        p {
-            margin: 0;
-        }
-
-        &_active {
-            transform: scale(100%);
-            opacity: 1;
-            visibility: visible;
-        }
-
-        &_short {
-            width: calc(100% - 163px);
-        }
+        grid-column: 1/3;
+        border-radius: 30px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
     }
 
     &__geolocation {
@@ -136,8 +102,6 @@
     }
 
     &__theme-select {
-        justify-self: flex-end;
-        
         &-open-btn {
             width: 40px;
             height: 40px;
@@ -193,7 +157,8 @@
         height: 100%;
         overflow: hidden;
         border-radius: 30px;
-        z-index: 0;
+        z-index: 1;
+        pointer-events: none;
     }
 
     &__location {
