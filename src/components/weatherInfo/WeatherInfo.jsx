@@ -1,21 +1,19 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { createSelector } from '@reduxjs/toolkit'
 import { fetchForecast } from './weatherInfoSlice'
+
 import DaysList from '../daysList/DaysList'
+import DayOverall from '../dayOverall/DayOverall'
+import Sunrise from '../sunrise/Sunrise'
+import HourlyForecast from '../hourlyForecast/HourlyForecast'
+import MoonPhase from '../moonPhase/MoonPhase'
 
 import './weatherInfo.scss'
 
 export default function WeatherInfo() {
+    console.log('render')
     const dispatch = useDispatch()
-    const getGeographicalCoordinates = createSelector(
-        state => state.locations.geographicalCoordinates.lat,
-        state => state.locations.geographicalCoordinates.lon,
-        (lat, lon) => {
-            return {lat, lon}
-        }
-    )
-    const {lat, lon} = useSelector(getGeographicalCoordinates)
+    const {lat, lon} = useSelector(state => state.locations.geographicalCoordinates)
     const status = useSelector(state => state.weatherInfo.status)
     
     useEffect(() => {
@@ -24,9 +22,15 @@ export default function WeatherInfo() {
         }
     }, [lat, lon])
     
+    if(status !== 'success') return
     return (
         <div className='weather'>
-            {status === 'success' ? <DaysList/> : null}
+            <DaysList/>
+            <DayOverall/>
+            <Sunrise/>
+            <HourlyForecast/>
+            <MoonPhase/>
         </div>
     )
 }
+

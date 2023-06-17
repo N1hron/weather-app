@@ -1,6 +1,5 @@
 .days-list {
     min-width: 300px;
-    width: fit-content;
     padding: 0;
     margin: 0;
     background-color: var(--secondary-color);
@@ -11,6 +10,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 15px;
+    grid-row: 1/3;
 
     &__hover-shadow {
         position: absolute;
@@ -36,8 +36,9 @@
         box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
         border-radius: 15px;
         padding: 15px;
-        transition: all 0.1s;
+        transition: all 0.05s;
         cursor: pointer;
+        
 
         svg {
             height: 50px;
