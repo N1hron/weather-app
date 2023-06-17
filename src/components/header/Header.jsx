@@ -30,8 +30,8 @@ export default function Header() {
                 </div>
                 <ThemeSwitcher/>
             </div>
-            {inputValue ? <Locations inputValue={inputValue} setInputValue={setInputValue}/>
-                        : <CurrentLocation/>}
+            <Locations inputValue={inputValue} setInputValue={setInputValue}/>
+            <CurrentLocation inputValue={inputValue}/>
         </header>
     )
 }

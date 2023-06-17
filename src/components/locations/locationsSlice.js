@@ -1,4 +1,4 @@
-import { createSlice, createEntityAdapter, createAsyncThunk } from "@reduxjs/toolkit"
+import { createSlice, createEntityAdapter, createAsyncThunk } from '@reduxjs/toolkit'
 
 const locationsAdapter = createEntityAdapter()
 
@@ -11,10 +11,9 @@ const initialState = locationsAdapter.getInitialState({
 export const fetchLocations = createAsyncThunk(
     'locations/fetchLocations',
     async () => {
-        const request = await fetch('https://countriesnow.space/api/v0.1/countries')
-        const json = await request.json()
-        const locations = json.data.map((location, i) => ({id: i, ...location}))
-        return locations
+        const response = await fetch('https://countriesnow.space/api/v0.1/countries')
+        const json = await response.json()
+        return json.data.map((location, i) => ({id: i, ...location}))
     }
 )
 
@@ -22,10 +21,10 @@ export const fetchGeographicalCoordinates = createAsyncThunk(
     'locations/getGeographicalCoordinates',
     async ({city, countryCode}) => {
         const apiKey = 'fb892f52993e357f7e4654a5a9bbc648'
-        const request = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&limit=1&appid=${apiKey}`)
-        const json = await request.json()
-        console.log(json)
-        return json
+        const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&limit=1&appid=${apiKey}`)
+        const json = await response.json()
+        const {lat, lon} = json[0]
+        return {lat, lon}
     }
 )
 
@@ -43,10 +42,12 @@ const locationsSlice = createSlice({
                 locationsAdapter.setAll(state, action.payload)
             })
             .addCase(fetchLocations.rejected, state => {state.status = 'failure'})
+            .addCase(fetchGeographicalCoordinates.pending, state => {state.status = 'loading'})
             .addCase(fetchGeographicalCoordinates.fulfilled, (state, action) => {
-                const {lat, lon} = action.payload[0]
-                state.geographicalCoordinates = {lat, lon}
+                state.geographicalCoordinates = action.payload
+                state.status = 'success'
             })
+            .addCase(fetchGeographicalCoordinates.rejected, state => {state.status = 'failure'})
     }
 })
 

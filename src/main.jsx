@@ -9,9 +9,9 @@ import './main.scss'
 
 const root = createRoot(document.querySelector('#root'))
 root.render(
-  <StrictMode>
+  // <StrictMode>
     <Provider store={store}>
       <App/>
     </Provider>
-  </StrictMode>
+  // </StrictMode>
 )

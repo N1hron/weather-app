@@ -1,5 +1,6 @@
 .days-list {
-    max-width: 320px;
+    min-width: 300px;
+    width: fit-content;
     padding: 0;
     margin: 0;
     background-color: var(--secondary-color);
@@ -18,7 +19,7 @@
         left: 0;
         top: 0;
         border-radius: 15px;
-        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
         transition: box-shadow 0.1s;
     }
 
@@ -26,23 +27,29 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 30px;
     }
 
     &__item {
         position: relative;
         background-color: var(--secondary-color);
-        box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
         border-radius: 15px;
         padding: 15px;
         transition: all 0.1s;
+        cursor: pointer;
 
         svg {
             height: 50px;
+
+            path {
+                stroke: var(--icon-color)
+            }
         }
 
         p {
             color: var(--font-main-color);
-            font-size: 25px;
+            font-size: 23px;
             margin: 0;
 
             &:nth-of-type(2) {
@@ -50,12 +57,12 @@
             }
         }
 
-        &:hover {
-            box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
-            scale: 102%;
+        &_active {
+            box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+            scale: 99%;
 
             .days-list__hover-shadow {
-                box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+                box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
             }
         }
     }

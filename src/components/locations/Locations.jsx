@@ -7,10 +7,10 @@ import '../../scss/animations.scss'
 import './locations.scss'
 
 export default function LocationsList({inputValue, setInputValue}) {
-    const nodeRef = useRef(null)
     const dispatch = useDispatch()
     const locations = useSelector(selectAllLocations)
     const themesListOpen = useSelector(state => state.appearance.themesListOpen)
+    const nodeRef = useRef(null)
 
     function onCurrentLocationChange(data) {
         dispatch(setCurrentLocation(data))
@@ -18,14 +18,13 @@ export default function LocationsList({inputValue, setInputValue}) {
     }
 
     function createListData(locations) {
-        let data = []
-        const temp = locations.map(country => country.cities.map(city => ({
+        const dataArrays = locations.map(country => country.cities.map(city => ({
             country: country.country,
             city: city,
             countryCode: country.iso3
         })))
-        temp.forEach(item => {data = data.concat(item)})
-        return data;
+
+        return dataArrays.reduce((accumulator, currArr) => [...accumulator, ...currArr], [])
     }
 
     function filterLocations(locations) {
@@ -45,7 +44,7 @@ export default function LocationsList({inputValue, setInputValue}) {
     const listItems = useMemo(() => createListItems(filteredListData), [filteredListData])
 
     const className = `locations${themesListOpen ? ' locations_short' : ''}`
-    
+    if(!inputValue) return
     return (
         <CSSTransition nodeRef={nodeRef} in={true} appear={true} classNames='locations' timeout={100}>
             <div ref={nodeRef} className={className}>
