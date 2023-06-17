@@ -2,7 +2,7 @@
     position: relative;
     display: grid;
     gap: 15px;
-    grid-template-columns: calc(100vw - 223px) 148px;
+    grid-template-columns: calc(100% - 163px) 148px;
 
     &__top {
         position: relative;
