@@ -19,6 +19,7 @@
         transform: translateY(-50%);
         left: 10%;
         box-sizing: content-box;
+        transition: all 0.1s;
     }
 
     &__measure {
@@ -36,12 +37,13 @@
         font-weight: 400;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin: 0;
-        padding: 0 20px 0 40px;
         font-weight: 700;
 
         span {
             font-weight: 400;
+            font-size: 40px;
         }
     }
 

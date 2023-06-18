@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchForecast } from './weatherInfoSlice'
+import { clearDate } from './weatherInfoSlice'
 
 import DaysList from '../daysList/DaysList'
 import DayOverall from '../dayOverall/DayOverall'
@@ -19,6 +20,7 @@ export default function WeatherInfo() {
     
     useEffect(() => {
         if(lat && lon) {
+            dispatch(clearDate())
             dispatch(fetchForecast({lat, lon}))
         }
     }, [lat, lon])

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
     status: 'idle',
-    selectedDate: '',
+    selectedDate: [],
     data: {},
     moonPhase: ''
 }
@@ -28,7 +28,8 @@ const weatherInfoSlice = createSlice({
     name: 'weatherInfo',
     initialState,
     reducers: {
-        setDate: (state, action) => {state.selectedDate = action.payload}
+        setDate: (state, action) => {state.selectedDate = action.payload},
+        clearDate: (state) => {state.selectedDate = []}
     },
     extraReducers: (builder) => {
         builder
@@ -44,5 +45,5 @@ const weatherInfoSlice = createSlice({
 
 const { actions, reducer } = weatherInfoSlice
 
-export const { setDate } = actions
+export const { setDate, clearDate } = actions
 export default reducer
