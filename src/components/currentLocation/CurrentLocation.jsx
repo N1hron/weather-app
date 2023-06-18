@@ -1,33 +1,34 @@
 import { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
-import { fetchGeographicalCoordinates } from '../locations/locationsSlice'
+import { getIsThemesListOpen } from '../../appearanceSlice'
+import { fetchGeographicalCoordinates, getCurrentLocation } from '../locations/locationsSlice'
 
 import '../../scss/animations.scss'
 import './currentLocation.scss'
 
 export default function CurrentLocation({inputValue}) {
-    const dispatch = useDispatch()
-    const locationData = useSelector(state => state.locations.currentLocation)
-    const themesListOpen = useSelector(state => state.appearance.themesListOpen)
     const nodeRef = useRef(null)
+    const dispatch = useDispatch()
+    const currentLocation = useSelector(getCurrentLocation)
+    const isThemesListOpen = useSelector(getIsThemesListOpen)
 
-    const location = Object.keys(locationData).length ? `${locationData.city}, ${locationData.country}` : ''
+    const {city, country, countryCode} = currentLocation
+    
+    useEffect(getGeographicalCoordinatesFromApi, [city, countryCode])
 
-    useEffect(() => {
-        if(location) {
-            dispatch(fetchGeographicalCoordinates({city: locationData.city, countryCode: locationData.countryCode}))
-        }
-    }, [location])
+    function getGeographicalCoordinatesFromApi() {
+        if(city && countryCode) dispatch(fetchGeographicalCoordinates({city, countryCode}))
+    }
 
-    const className = `current-location${themesListOpen ? ' current-location_short' : ''}`
+    const className = `current-location${isThemesListOpen ? ' current-location_short' : ''}`
+    const title = Object.keys(currentLocation).length ? `${city}, ${country}` : ''
 
-    if(!location || inputValue) return
-
+    if(!title || inputValue) return
     return (
         <CSSTransition nodeRef={nodeRef} in={true} appear={true} classNames='current-location' timeout={100}>
             <div ref={nodeRef} className={className}> 
-                <h2>{location}</h2>
+                <h2>{title}</h2>
             </div>
         </CSSTransition>
     )

@@ -3,7 +3,7 @@
     height: 100%;
     max-width: 1860px;
     display: grid;
-    grid-template-columns: 360px 720px 360px 360px;
+    grid-template-columns: 360px 720px 360px 170px 170px;
     grid-template-rows: 170px 170px 324px;
     gap: 20px;
     justify-content: center;
@@ -17,7 +17,7 @@
 
 @media(max-width: 1919px) {
     .weather {
-        grid-template-columns: repeat(3, 360px);
+        grid-template-columns: 360px 360px 170px 170px;
         grid-template-rows: 170px 170px 360px 324px;
     }
 }

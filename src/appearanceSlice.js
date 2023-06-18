@@ -14,6 +14,8 @@ const appearanceSlice = createSlice({
     }
 })
 
+export const getIsThemesListOpen = state => state.appearance.themesListOpen
+
 const { actions, reducer} = appearanceSlice
 const { changeTheme, setThemesListIsOpen } = actions
 

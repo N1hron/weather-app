@@ -10,7 +10,7 @@ const store = configureStore({
         locations: locationsReducer,
         weatherInfo: weatherInfoReducer
     },
-    devTools: import.meta.env.DEV || true
+    devTools: import.meta.env.DEV
 })
 
 export default store

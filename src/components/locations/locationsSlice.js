@@ -51,6 +51,8 @@ const locationsSlice = createSlice({
     }
 })
 
+export const getCurrentLocation = state => state.locations.currentLocation
+
 const { actions, reducer } = locationsSlice
 const { selectAll } = locationsAdapter.getSelectors(state => state.locations)
 const { setCurrentLocation } = actions

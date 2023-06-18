@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
 
 const initialState = {
     status: 'idle',
@@ -42,6 +42,18 @@ const weatherInfoSlice = createSlice({
             .addCase(fetchForecast.rejected, (state) => {state.status = 'failure'})
     }
 })
+
+export const getStatus = state => state.weatherInfo.status
+export const getGographicalCoordinates = state => state.locations.geographicalCoordinates
+export const getDailyForecast = state => state.weatherInfo.data.daily
+export const getSelectedDate = state => state.weatherInfo.selectedDate
+
+export const getUVIndex = createSelector(
+    state => state.weatherInfo.selectedDate[0],
+    state => state.weatherInfo.selectedDate[1],
+    state => state.weatherInfo.data.daily.uv_index_max,
+    (index, date, uvIndexes) => uvIndexes[index]
+)
 
 const { actions, reducer } = weatherInfoSlice
 
