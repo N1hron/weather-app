@@ -1,4 +1,4 @@
-import './uvindex.scss'
+import './uvIndex.scss'
 
 export default function UVIndex() {
     return (
