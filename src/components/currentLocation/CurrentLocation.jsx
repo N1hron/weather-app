@@ -27,7 +27,7 @@ export default function CurrentLocation({inputValue}) {
     return (
         <CSSTransition nodeRef={nodeRef} in={true} appear={true} classNames='current-location' timeout={100}>
             <div ref={nodeRef} className={className}> 
-                <p>{location}</p>
+                <h2>{location}</h2>
             </div>
         </CSSTransition>
     )

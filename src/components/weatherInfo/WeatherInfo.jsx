@@ -6,6 +6,7 @@ import DaysList from '../daysList/DaysList'
 import DayOverall from '../dayOverall/DayOverall'
 import Sunrise from '../sunrise/Sunrise'
 import HourlyForecast from '../hourlyForecast/HourlyForecast'
+import UVIndex from '../uvindex/UVIndex'
 import MoonPhase from '../moonPhase/MoonPhase'
 
 import './weatherInfo.scss'
@@ -27,9 +28,10 @@ export default function WeatherInfo() {
         <div className='weather'>
             <DaysList/>
             <DayOverall/>
+            <UVIndex/>
+            <MoonPhase/>
             <Sunrise/>
             <HourlyForecast/>
-            <MoonPhase/>
         </div>
     )
 }

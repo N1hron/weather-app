@@ -1,6 +1,5 @@
 .current-location {
     color: var(--font-main-color);
-    font-size: 30px;
     text-align: center;
     background-color: var(--secondary-color);
     border-radius: 15px;
@@ -14,7 +13,9 @@
     transform-origin: top center;
     grid-column: 1/3;
 
-    p {
+    h2 {
+        font-size: 30px;
+        font-weight: 400;
         margin: 0;
     }
 
