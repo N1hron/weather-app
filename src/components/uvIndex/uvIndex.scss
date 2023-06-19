@@ -1,7 +1,7 @@
 .uv-index {
     background-color: var(--secondary-color);
     border-radius: 15px;
-    grid-column: 3/4;
+    grid-column: 3/5;
     grid-row: 1/2;
     padding: 15px;
     display: flex;
@@ -62,7 +62,7 @@
 
 @media(max-width: 1919px) {
     .uv-index {
-        grid-column: 2/3;
+        grid-column: 2/4;
         grid-row: 1/2;
     }
 }

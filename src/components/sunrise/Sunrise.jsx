@@ -1,15 +1,24 @@
+import { useSelector } from 'react-redux'
+import { getSunrise, getUTCOffset } from '../weatherInfo/weatherInfoSlice'
+
+import { ReactComponent as SunriseIcon } from '../../assets/icons/sunrise.svg'
+
 import './sunrise.scss'
 
 export default function Sunrise() {
-
+    const sunrise = useSelector(getSunrise)
+    const utcOffset = useSelector(getUTCOffset)
+    
     return (
         <div className='sunrise'>
-            <p>Sunrise <span>05:00</span></p>
-            <div className='sunrise__illustration'>
-                <div className='sunrise__horizon'></div>
-                <div className='sunrise__circle'><div className='sunrise__circle-inner'></div></div>
-            </div>
-            <p>Sunset <span>00:00</span></p>
+            {
+                sunrise ? 
+                <>
+                    <h3>Sunrise</h3>
+                    <SunriseIcon/>
+                    <p>{sunrise} <span>UTC{utcOffset >= 0 ? '+' : ''}{utcOffset}</span></p>
+                </> : null
+            }
         </div>
     )
 }

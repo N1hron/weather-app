@@ -1,7 +1,8 @@
 import { useMemo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
-import { selectAllLocations, setCurrentLocation, getIsThemesListOpen } from './locationsSlice'
+import { selectAllLocations, setCurrentLocation } from './locationsSlice'
+import { getIsThemesListOpen } from '../../appearanceSlice'
 
 import '../../scss/animations.scss'
 import './locations.scss'

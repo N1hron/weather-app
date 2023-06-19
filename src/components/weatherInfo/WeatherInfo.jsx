@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchForecast, getStatus, getGographicalCoordinates } from './weatherInfoSlice'
-import { clearDate } from './weatherInfoSlice'
+import { fetchForecast, getStatus, getGographicalCoordinates, clearDate } from './weatherInfoSlice'
 
 import DaysList from '../daysList/DaysList'
-import DayOverall from '../dayOverall/DayOverall'
+import CurrentWeather from '../currentWeather/CurrentWeather'
 import Sunrise from '../sunrise/Sunrise'
+import Sunset from '../sunset/Sunset'
 import HourlyForecast from '../hourlyForecast/HourlyForecast'
 import UVIndex from '../uvIndex/UVIndex'
 import MoonPhase from '../moonPhase/MoonPhase'
@@ -30,10 +30,11 @@ export default function WeatherInfo() {
     return (
         <div className='weather'>
             <DaysList/>
-            <DayOverall/>
+            <CurrentWeather/>
             <UVIndex/>
             <MoonPhase/>
             <Sunrise/>
+            <Sunset/>
             <HourlyForecast/>
         </div>
     )

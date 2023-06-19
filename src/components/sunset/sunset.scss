@@ -1,0 +1,23 @@
+@import '../sunrise/sunrise.scss';
+
+.sunset {
+    @extend .sunrise;
+    grid-column: 4/5;
+
+    svg {
+        path {
+            stroke: var(--icon-color);
+        }
+
+        circle {
+            stroke: #ff8329;
+        }
+    }
+}
+
+@media(max-width: 1919px) {
+    .sunset {
+        @extend .sunrise;
+        grid-column: 3/4;
+    }
+}

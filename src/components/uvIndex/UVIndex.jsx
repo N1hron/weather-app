@@ -23,7 +23,7 @@ export default function UVIndex() {
             left: `${position}%`
         }
     }
-
+    console.log('render')
     const description = makeDescription(uvIndex),
           positionStyles = getPointerPositionStyles(uvIndex)
 
