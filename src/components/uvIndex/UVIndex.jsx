@@ -23,22 +23,18 @@ export default function UVIndex() {
             left: `${position}%`
         }
     }
-    console.log('render')
+ 
     const description = makeDescription(uvIndex),
           positionStyles = getPointerPositionStyles(uvIndex)
 
+    if(!uvIndex) return <div className='uv-index'></div>
     return (
         <div className='uv-index'>
-            {
-                uvIndex ?
-                <>
-                    <h3>UV Index <span>day max</span></h3>
-                    <p>{uvIndex}<span>{description}</span></p>
-                    <div className='uv-index__measure'>
-                        <div style={positionStyles} className='uv-index__pointer'></div>
-                    </div>
-                </> : null
-            }
+            <h3>UV Index <span>day max</span></h3>
+            <p>{uvIndex}<span>{description}</span></p>
+            <div className='uv-index__measure'>
+                <div style={positionStyles} className='uv-index__pointer'></div>
+            </div>
         </div>
     )
 }

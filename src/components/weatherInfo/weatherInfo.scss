@@ -19,6 +19,6 @@
     .weather {
         max-width: 1120px;
         grid-template-columns: 360px repeat(4, 1fr);
-        grid-template-rows: 170px 170px 360px 360px;
+        grid-template-rows: 360px 170px 170px 360px;
     }
 }

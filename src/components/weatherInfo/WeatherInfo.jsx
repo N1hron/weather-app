@@ -8,7 +8,7 @@ import Sunrise from '../sunrise/Sunrise'
 import Sunset from '../sunset/Sunset'
 import HourlyForecast from '../hourlyForecast/HourlyForecast'
 import UVIndex from '../uvIndex/UVIndex'
-import MoonPhase from '../moonPhase/MoonPhase'
+import Wind from '../wind/Wind'
 
 import './weatherInfo.scss'
 
@@ -32,7 +32,7 @@ export default function WeatherInfo() {
             <DaysList/>
             <CurrentWeather/>
             <UVIndex/>
-            <MoonPhase/>
+            <Wind/>
             <Sunrise/>
             <Sunset/>
             <HourlyForecast/>

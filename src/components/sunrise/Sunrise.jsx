@@ -9,16 +9,12 @@ export default function Sunrise() {
     const sunrise = useSelector(getSunrise)
     const utcOffset = useSelector(getUTCOffset)
     
+    if(!sunrise) return <div className='sunrise'></div>
     return (
         <div className='sunrise'>
-            {
-                sunrise ? 
-                <>
-                    <h3>Sunrise</h3>
-                    <SunriseIcon/>
-                    <p>{sunrise} <span>UTC{utcOffset >= 0 ? '+' : ''}{utcOffset}</span></p>
-                </> : null
-            }
+            <h3>Sunrise</h3>
+            <SunriseIcon/>
+            <p>{sunrise} <span>UTC{utcOffset >= 0 ? '+' : ''}{utcOffset}</span></p>
         </div>
     )
 }

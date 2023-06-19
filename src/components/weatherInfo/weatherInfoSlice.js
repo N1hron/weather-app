@@ -3,14 +3,13 @@ import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 const initialState = {
     status: 'idle',
     selectedDate: [],
-    data: {},
-    moonPhase: ''
+    data: {}
 }
 
 export const fetchForecast = createAsyncThunk(
     'weatherInfo/fetchForecast',
     async ({lat, lon}) => {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,cloudcover,visibility,windspeed_10m,winddirection_10m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=auto`
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,cloudcover,visibility,windspeed_10m,winddirection_10m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max,winddirection_10m_dominant&current_weather=true&timezone=auto`
         const response = await fetch(url)
         const json = await response.json()
         return json
@@ -47,6 +46,13 @@ export const getStatus = state => state.weatherInfo.status
 export const getGographicalCoordinates = state => state.locations.geographicalCoordinates
 export const getDailyForecast = state => state.weatherInfo.data.daily
 export const getSelectedDate = state => state.weatherInfo.selectedDate
+
+export const getWind = createSelector(
+    state => state.weatherInfo.selectedDate[0],
+    state => state.weatherInfo.data.daily.windspeed_10m_max,
+    state => state.weatherInfo.data.daily.winddirection_10m_dominant,
+    (index, speed, direction) => [speed[index], direction[index]]
+)
 
 export const getUVIndex = createSelector(
     state => state.weatherInfo.selectedDate[0],
