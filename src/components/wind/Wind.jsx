@@ -6,14 +6,14 @@ import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg'
 import './wind.scss'
 
 export default function MoonPhase() {
-    const [windSpeed, windDirection] = useSelector(getWind)
+    const [windSpeed, windDirection, units] = useSelector(getWind)
 
-    if(!windSpeed && !windDirection) return <div className='wind'></div>
+    if(!(windSpeed && windDirection && units)) return <div className='wind'></div>
     return (
         <div className='wind'>
             <h3>Wind</h3>
             <div className='wind__speed'>
-                {windSpeed} <p><span>km/h</span><span>day max</span></p>
+                {windSpeed} <p><span>{units}</span><span>day max</span></p>
             </div>
             <div className='wind__direction'>
                 <span className='wind__direction-N'>N</span>

@@ -41,6 +41,8 @@
 
         svg {
             height: 50px;
+            width: 50px;
+            flex-shrink: 0;
 
             path {
                 stroke: var(--icon-color)

@@ -19,7 +19,7 @@
         transform: translateY(-50%);
         left: 10%;
         box-sizing: content-box;
-        transition: all 0.1s;
+        transition: all 0.1s ease-out;
     }
 
     &__measure {
@@ -54,7 +54,7 @@
         font-weight: 400;
 
         span {
-            font-size: 0.5em;
+            font-size: 18px;
             opacity: 0.8;
         }
     }

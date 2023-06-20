@@ -4,11 +4,12 @@ import { fetchForecast, getStatus, getGographicalCoordinates, clearDate } from '
 
 import DaysList from '../daysList/DaysList'
 import CurrentWeather from '../currentWeather/CurrentWeather'
-import Sunrise from '../sunrise/Sunrise'
-import Sunset from '../sunset/Sunset'
-import HourlyForecast from '../hourlyForecast/HourlyForecast'
 import UVIndex from '../uvIndex/UVIndex'
 import Wind from '../wind/Wind'
+import Sunrise from '../sunrise/Sunrise'
+import Sunset from '../sunset/Sunset'
+import Precipitation from '../precipitation/Precipitation'
+import HourlyForecast from '../hourlyForecast/HourlyForecast'
 
 import './weatherInfo.scss'
 
@@ -35,6 +36,7 @@ export default function WeatherInfo() {
             <Wind/>
             <Sunrise/>
             <Sunset/>
+            <Precipitation/>
             <HourlyForecast/>
         </div>
     )
