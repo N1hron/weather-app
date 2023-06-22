@@ -1,14 +1,16 @@
 import { useSelector } from 'react-redux'
 import { getWind } from '../weatherInfo/weatherInfoSlice'
+import hasNullOrUndefined from '../../utils/hasNullUndefinedOrNan'
 
 import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg'
 
 import './wind.scss'
 
 export default function MoonPhase() {
-    const [windSpeed, windDirection, units] = useSelector(getWind)
-
-    if(!(windSpeed && windDirection && units)) return <div className='wind'></div>
+    const windData = useSelector(getWind)
+    
+    if(hasNullOrUndefined(windData)) return <div className='wind'></div>
+    const [windSpeed, windDirection, units] = windData
     return (
         <div className='wind'>
             <h3>Wind</h3>

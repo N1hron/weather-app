@@ -11,7 +11,7 @@ export default function ThemeSwitcher() {
     const dispatch = useDispatch()
     const isThemesListOpen = useSelector(state => state.appearance.themesListOpen)
     const themesListRef = useRef(null)
-    const { setTheme } = useThemeSetter(onButtonClick)
+    const { setTheme } = useThemeSetter()
 
     function onButtonClick() {
         themesListRef.current.classList.toggle('theme-switcher_active')
@@ -24,9 +24,9 @@ export default function ThemeSwitcher() {
                 <ColorsIcon/>
             </button>
             <ul className='theme-switcher__themes-list'>
-                <li><button onClick={() => setTheme('dark-blue')}></button></li>
-                <li><button onClick={() => setTheme('dark')}></button></li>
-                <li><button onClick={() => setTheme('light')}></button></li>
+                <li><button onClick={() => setTheme('dark-blue', onButtonClick)}></button></li>
+                <li><button onClick={() => setTheme('dark', onButtonClick)}></button></li>
+                <li><button onClick={() => setTheme('light', onButtonClick)}></button></li>
             </ul>
         </div>
     )

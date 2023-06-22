@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
+import getTimeByTimestamp from '../../utils/getTimeByTimestamp'
 
 const initialState = {
     status: 'idle',
@@ -9,7 +10,7 @@ const initialState = {
 export const fetchForecast = createAsyncThunk(
     'weatherInfo/fetchForecast',
     async ({lat, lon}) => {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,cloudcover,visibility,windspeed_10m,winddirection_10m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max,winddirection_10m_dominant,precipitation_sum,precipitation_hours,precipitation_probability_mean&current_weather=true&timezone=auto`
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,cloudcover,visibility,windspeed_10m,winddirection_10m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max,winddirection_10m_dominant,precipitation_sum,precipitation_hours,precipitation_probability_mean&current_weather=true&timeformat=unixtime&timezone=auto`
         const response = await fetch(url)
         const json = await response.json()
         return json
@@ -72,13 +73,19 @@ export const getUVIndex = createSelector(
 export const getSunrise = createSelector(
     state => state.weatherInfo.selectedDate[0],
     state => state.weatherInfo.data.daily.sunrise,
-    (index, sunrises) => sunrises[index]?.split('T')[1]
+    (index, sunrises) => {
+        const {hours, minutes} = getTimeByTimestamp(sunrises[index])
+        return {hours, minutes}
+    }
 )
 
 export const getSunset = createSelector(
     state => state.weatherInfo.selectedDate[0],
     state => state.weatherInfo.data.daily.sunset,
-    (index, sunsets) => sunsets[index]?.split('T')[1]
+    (index, sunsets) => {
+        const {hours, minutes} = getTimeByTimestamp(sunsets[index])
+        return {hours, minutes}
+    }
 )
 
 export const getUTCOffset = state => state.weatherInfo.data.utc_offset_seconds / 3600

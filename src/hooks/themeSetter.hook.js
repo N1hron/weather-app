@@ -2,43 +2,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { changeTheme } from '../appearanceSlice'
 
-const themesData = {
-    'light': {
-        mainColor: '#fafafa',
-        secondaryColor: '#e4e5f1',
-        additionalColor: '#484b6a',
-        additionalColorHover: '#424561',
-        additionalColorActive: '#3b3d56',
-        borderColor: '#484b6a',
-        fontSecondaryColor: '#FFFFFF',
-        fontMainColor: '#484b6a',
-        iconColor: '#484b6a'
-    },
-    'dark': {
-        mainColor: '#1F2025',
-        secondaryColor: '#292a31',
-        additionalColor: '#adadad',
-        additionalColorHover: '#888888',
-        additionalColorActive: '#757575',
-        borderColor: '#adadad',
-        fontMainColor: '#dadada',
-        fontSecondaryColor: '#393838',
-        iconColor: '#dadada'
-    },
-    'dark-blue': {
-        mainColor: '#1d232f',
-        secondaryColor: '#212733',
-        additionalColor: '#272b68',
-        additionalColorHover: '#24285e',
-        additionalColorActive: '#202353',
-        borderColor: '#FFFFFF',
-        fontSecondaryColor: '#FFFFFF',
-        fontMainColor: '#FFFFFF',
-        iconColor: '#FFFFFF'
-    }
-}
+import { themes } from '../data'
 
-export default function useThemeSetter(callback) {
+export default function useThemeSetter() {
     const dispatch = useDispatch()
     const currentTheme = useSelector(state => state.appearance.currentTheme)
 
@@ -51,26 +17,27 @@ export default function useThemeSetter(callback) {
     }, [])
 
     function applyTheme(theme) {
-        const root = document.documentElement
-        const themeData = themesData[theme]
-        root.style.setProperty('--main-color', themeData.mainColor)
-        root.style.setProperty('--secondary-color', themeData.secondaryColor)
-        root.style.setProperty('--additional-color', themeData.additionalColor)
-        root.style.setProperty('--additional-color-hover', themeData.additionalColorHover)
-        root.style.setProperty('--additional-color-active', themeData.additionalColorActive)
-        root.style.setProperty('--border-color', themeData.borderColor)
-        root.style.setProperty('--font-main-color', themeData.fontMainColor)
-        root.style.setProperty('--font-secondary-color', themeData.fontSecondaryColor)
-        root.style.setProperty('--icon-color', themeData.iconColor)
+        const themeData = themes[theme]
+        const rootStyle = document.documentElement.style
+        
+        rootStyle.setProperty('--main-color', themeData.mainColor)
+        rootStyle.setProperty('--secondary-color', themeData.secondaryColor)
+        rootStyle.setProperty('--additional-color', themeData.additionalColor)
+        rootStyle.setProperty('--additional-color-hover', themeData.additionalColorHover)
+        rootStyle.setProperty('--additional-color-active', themeData.additionalColorActive)
+        rootStyle.setProperty('--border-color', themeData.borderColor)
+        rootStyle.setProperty('--font-main-color', themeData.fontMainColor)
+        rootStyle.setProperty('--font-secondary-color', themeData.fontSecondaryColor)
+        rootStyle.setProperty('--icon-color', themeData.iconColor)
     }
 
-    function setTheme(theme) {
+    function setTheme(theme, callback) {
         if(currentTheme != theme) {
             dispatch(changeTheme(theme))
             applyTheme(theme)
             localStorage.setItem('theme', theme)
         }
-        callback()
+        if(callback) callback()
     }
 
     return { setTheme }

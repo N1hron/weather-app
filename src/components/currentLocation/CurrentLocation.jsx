@@ -15,9 +15,9 @@ export default function CurrentLocation({inputValue}) {
 
     const {city, country, countryCode} = currentLocation
     
-    useEffect(getGeographicalCoordinatesFromApi, [city, countryCode])
+    useEffect(getGeographicalCoordinates, [city, countryCode])
 
-    function getGeographicalCoordinatesFromApi() {
+    function getGeographicalCoordinates() {
         if(city && countryCode) dispatch(fetchGeographicalCoordinates({city, countryCode}))
     }
 

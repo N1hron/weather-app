@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { getUVIndex } from '../weatherInfo/weatherInfoSlice'
+import hasNullOrUndefined from '../../utils/hasNullUndefinedOrNan'
 
 import './uvIndex.scss'
 
@@ -14,7 +15,7 @@ export default function UVIndex() {
         else return 'Extreme'
     }
 
-    function getPointerPositionStyles(uvIndex) {
+    function getPointerPositionStyle(uvIndex) {
         let position = (uvIndex / 12) * 100
         if(uvIndex > 12) position = 97
         else if(uvIndex === 0) position = 3
@@ -23,11 +24,12 @@ export default function UVIndex() {
             left: `${position}%`
         }
     }
- 
-    const description = makeDescription(uvIndex),
-          positionStyles = getPointerPositionStyles(uvIndex)
 
-    if(!uvIndex) return <div className='uv-index'></div>
+    if(hasNullOrUndefined(uvIndex)) return <div className='uv-index'></div>
+
+    const description = makeDescription(uvIndex),
+          positionStyles = getPointerPositionStyle(uvIndex)
+
     return (
         <div className='uv-index'>
             <h3>UV Index <span>day max</span></h3>

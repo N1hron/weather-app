@@ -18,7 +18,7 @@ export default function LocationsList({inputValue, setInputValue}) {
         setInputValue('')
     }
 
-    function createListData(locations) {
+    function createListData() {
         const dataArrays = locations.map(country => country.cities.map(city => ({
             country: country.country,
             city: city,
@@ -29,22 +29,22 @@ export default function LocationsList({inputValue, setInputValue}) {
     }
 
     function filterLocations(locations) {
-        const regexp = new RegExp(inputValue, 'igm');
-        return locations.filter(location => location.country.search(regexp) !== -1 || location.city.search(regexp) !== -1)
+        const filter = inputValue.toString().toLowerCase()
+        return locations.filter(loc => loc.country.concat(loc.city).toLowerCase().includes(filter))
     }
 
-    function createListItems(listData) {
-        return listData.slice(0, 20).map((data, i) => {
+    function createListItems() {
+        return filterLocations(listData).slice(0, 50).map((data, i) => {
             const location = `${data.city}, ${data.country}`
             return <li key={i} tabIndex={0} className='locations__item' onClick={() => {onCurrentLocationChange(data)}}>{location}</li>
         })
     }
 
-    const listData = useMemo(() => createListData(locations), [locations])
-    const filteredListData = useMemo(() => filterLocations(listData), [inputValue, listData])
-    const listItems = useMemo(() => createListItems(filteredListData), [filteredListData])
+    const listData = useMemo(() => createListData(), [locations])
+    const listItems = useMemo(() => createListItems(), [inputValue, listData])
 
     const className = `locations${isThemesListOpen ? ' locations_short' : ''}`
+    
     if(!inputValue) return
     return (
         <CSSTransition nodeRef={nodeRef} in={true} appear={true} classNames='locations' timeout={100}>
