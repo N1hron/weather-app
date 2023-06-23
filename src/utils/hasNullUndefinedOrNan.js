@@ -1,5 +1,4 @@
 export default function hasNullUndefinedOrNan(value) {
-
     if ([null, undefined].includes(value) || Number.isNaN(value)) return true
 
     else if (Array.isArray(value)) {

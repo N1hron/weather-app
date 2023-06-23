@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { setDate, getSelectedDate, getDailyForecast } from '../weatherInfo/weatherInfoSlice'
 import getWeatherByWMO from '../../utils/getWeatherByWMO'
-import getTimeByTimestamp from '../../utils/getTimeByTimestamp'
+import getDateInfoByTimestamp from '../../utils/getDateInfoByTimestamp'
 
 import './daysList.scss'
 
@@ -17,7 +17,7 @@ export default function DaysList() {
 
             const timestamp = data.time[i],
                   weather = getWeatherByWMO(data.weathercode[i]),
-                  {year, month, day} = getTimeByTimestamp(timestamp)
+                  {year, month, day} = getDateInfoByTimestamp(timestamp)
 
             const dateInfo = [i, timestamp]
 

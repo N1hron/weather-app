@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
-import getTimeByTimestamp from '../../utils/getTimeByTimestamp'
+import getDateInfoByTimestamp from '../../utils/getDateInfoByTimestamp'
 
 const initialState = {
     status: 'idle',
@@ -74,8 +74,8 @@ export const getSunrise = createSelector(
     state => state.weatherInfo.selectedDate[0],
     state => state.weatherInfo.data.daily.sunrise,
     (index, sunrises) => {
-        const {hours, minutes} = getTimeByTimestamp(sunrises[index])
-        return {hours, minutes}
+        const {hours, minutes, utc} = getDateInfoByTimestamp(sunrises[index])
+        return {hours, minutes, utc}
     }
 )
 
@@ -83,12 +83,10 @@ export const getSunset = createSelector(
     state => state.weatherInfo.selectedDate[0],
     state => state.weatherInfo.data.daily.sunset,
     (index, sunsets) => {
-        const {hours, minutes} = getTimeByTimestamp(sunsets[index])
-        return {hours, minutes}
+        const {hours, minutes, utc} = getDateInfoByTimestamp(sunsets[index])
+        return {hours, minutes, utc}
     }
 )
-
-export const getUTCOffset = state => state.weatherInfo.data.utc_offset_seconds / 3600
 
 const { actions, reducer } = weatherInfoSlice
 
