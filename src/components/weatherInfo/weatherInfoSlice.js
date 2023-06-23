@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
-import getDateInfoByTimestamp from '../../utils/getDateInfoByTimestamp'
+import getLocalDate from '../../utils/getLocalDate'
 
 const initialState = {
     status: 'idle',
@@ -45,8 +45,14 @@ const weatherInfoSlice = createSlice({
 
 export const getStatus = state => state.weatherInfo.status
 export const getGographicalCoordinates = state => state.locations.geographicalCoordinates
-export const getDailyForecast = state => state.weatherInfo.data.daily
 export const getSelectedDate = state => state.weatherInfo.selectedDate
+
+export const getDaysInfo = createSelector(
+    state => state.weatherInfo.data.daily.time,
+    state => state.weatherInfo.data.utc_offset_seconds,
+    state => state.weatherInfo.data.daily.weathercode,
+    (timestamps, utcOffset, weathercodes) => ({timestamps, utcOffset, weathercodes})
+)
 
 export const getPrecipitation = createSelector(
     state => state.weatherInfo.selectedDate[0],
@@ -73,18 +79,20 @@ export const getUVIndex = createSelector(
 export const getSunrise = createSelector(
     state => state.weatherInfo.selectedDate[0],
     state => state.weatherInfo.data.daily.sunrise,
-    (index, sunrises) => {
-        const {hours, minutes, utc} = getDateInfoByTimestamp(sunrises[index])
-        return {hours, minutes, utc}
+    state => state.weatherInfo.data.utc_offset_seconds,
+    (index, sunrises, utcOffset) => {
+        const {hours, minutes, utcString} = getLocalDate(sunrises[index], utcOffset)
+        return {hours, minutes, utcString}
     }
 )
 
 export const getSunset = createSelector(
     state => state.weatherInfo.selectedDate[0],
     state => state.weatherInfo.data.daily.sunset,
-    (index, sunsets) => {
-        const {hours, minutes, utc} = getDateInfoByTimestamp(sunsets[index])
-        return {hours, minutes, utc}
+    state => state.weatherInfo.data.utc_offset_seconds,
+    (index, sunsets, utcOffset) => {
+        const {hours, minutes, utcString} = getLocalDate(sunsets[index], utcOffset)
+        return {hours, minutes, utcString}
     }
 )
 

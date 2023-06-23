@@ -10,12 +10,12 @@ export default function Sunset() {
     const sunset = useSelector(getSunset)
 
     if(hasNullUndefinedOrNan(sunset)) return <div className='sunset'></div>
-    const {hours, minutes, utc} = sunset
+    const {hours, minutes, utcString} = sunset
     return (
         <div className='sunset'>
             <h3>Sunset</h3>
             <SunsetIcon/>
-            <p>{`${hours}:${minutes}`} <span>UTC{utc}</span></p>
+            <p>{`${hours}:${minutes}`} <span>UTC{utcString}</span></p>
         </div>
     )
 }

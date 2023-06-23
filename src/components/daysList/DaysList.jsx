@@ -1,30 +1,29 @@
+import { useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setDate, getSelectedDate, getDailyForecast } from '../weatherInfo/weatherInfoSlice'
+import { setDate, getSelectedDate, getDaysInfo } from '../weatherInfo/weatherInfoSlice'
 import getWeatherByWMO from '../../utils/getWeatherByWMO'
-import getDateInfoByTimestamp from '../../utils/getDateInfoByTimestamp'
+import getLocalDate from '../../utils/getLocalDate'
 
 import './daysList.scss'
 
 export default function DaysList() {
     const dispatch = useDispatch()
-    const dailyForecast = useSelector(getDailyForecast)
+    const daysInfo = useSelector(getDaysInfo)
     const selectedDate = useSelector(getSelectedDate)
 
-    function createListItems(data) {
+    function createListItems({timestamps, utcOffset, weathercodes}) {
         let listItems = []
         
-        for(let i = 0; i < data.time.length; i++) { 
+        for(let i = 0; i < timestamps.length; i++) {    
+            const [weathercode, timestamp] = [weathercodes[i], timestamps[i]]     
 
-            const timestamp = data.time[i],
-                  weather = getWeatherByWMO(data.weathercode[i]),
-                  {year, month, day} = getDateInfoByTimestamp(timestamp)
+            const weather = getWeatherByWMO(weathercode),
+                  {year, month, day} = getLocalDate(timestamp, utcOffset)
 
-            const dateInfo = [i, timestamp]
-
-            const isActive = selectedDate[1] === data.time[i]
+            const isActive = selectedDate[1] === timestamp
             
             const listItem = 
-            <li key={i} className={`days-list__item${isActive ? ' days-list__item_active' : ''}`} onClick={() => onDateChange(dateInfo)}> 
+            <li key={timestamp} className={`days-list__item${isActive ? ' days-list__item_active' : ''}`} onClickCapture={() => onDateChange([i, timestamp])}> 
                 <div className='days-list__hover-shadow'></div>
                 <div className='days-list__content'>
                     <div className='days-list__description'>
@@ -45,8 +44,7 @@ export default function DaysList() {
         dispatch(setDate(date))
     }
 
-    const listItems = createListItems(dailyForecast)
-
+    const listItems = useMemo(() => createListItems(daysInfo), [daysInfo, selectedDate]) // SOLVE THIS LATER
     return (
         <ul className='days-list'>
            {listItems}

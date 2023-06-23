@@ -1,13 +1,20 @@
+const check = (value) => [null, undefined].includes(value) || Number.isNaN(value)
+
 export default function hasNullUndefinedOrNan(value) {
-    if ([null, undefined].includes(value) || Number.isNaN(value)) return true
+    if (check(value)) return true // May return true if value is primitive
 
-    else if (Array.isArray(value)) {
-        for(let i of value) if([null, undefined].includes(i) || Number.isNaN(i)) return true
-    } 
+    else if (Array.isArray(value)) { // If value is Array
+        for(let item of value) {
+            if(check(item)) return true
+        }
+    }
 
-    else if (typeof value === 'object') {
-        for(let i of Object.values(value)) if([null, undefined].includes(i) || Number.isNaN(i)) return true
+    else if (typeof value === 'object') { // If value is Object
+        for(let item of Object.values(value)) {
+            if(check(item)) return true
+        }
     }
 
     return false
 }
+ 
