@@ -3,7 +3,14 @@
     width: 100%;
     display: grid;
     gap: 15px;
-    grid-template-columns: calc(100% - 163px) 148px;
+    grid-template-rows: minmax(96px, auto) 53px;
+    grid-template-columns: 100%;
+
+    &__bottom {
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+    }
 
     &__top {
         position: relative;
@@ -14,45 +21,10 @@
         background-color: var(--secondary-color);
         gap: 20px;
         padding: 30px 30px 20px;
-        grid-column: 1/3;
         border-radius: 30px;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
-    }
-
-    &__geolocation {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-
-        p {
-            color: var(--font-main-color);
-            font-size: 25px;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        svg {
-            cursor: pointer;
-            transition: all 0.1s;
-            max-width: 35px;
-            max-height: 35px;
-            width: 100%;
-            height: 100%;
-
-            &:focus-visible {
-                transform: scale(110%);
-                outline: auto;
-            }
-
-            &:hover {
-                transform: scale(110%);
-            }
-
-            &:active {
-                transform: scale(100%);
-            }
-        }
+        
     }
 
     &__line {

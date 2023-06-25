@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { useRef } from 'react'
+import { forwardRef } from 'react'
+import { createPortal } from 'react-dom'
 import { setThemesListIsOpen } from '../../appearanceSlice'
 import useThemeSetter from '../../hooks/themeSetter.hook'
 
@@ -7,27 +8,34 @@ import { ReactComponent as ColorsIcon } from '../../assets/icons/color-filter.sv
 
 import './themeSwitcher.scss'
 
-export default function ThemeSwitcher() {
+function ThemeSwitcher(props, ref) {
     const dispatch = useDispatch()
     const isThemesListOpen = useSelector(state => state.appearance.themesListOpen)
-    const themesListRef = useRef(null)
     const { setTheme } = useThemeSetter()
+    const container = ref.current
 
     function onButtonClick() {
-        themesListRef.current.classList.toggle('theme-switcher_active')
         dispatch(setThemesListIsOpen(!isThemesListOpen))
     }
-
+    
     return (
-        <div ref={themesListRef} className='theme-switcher'>
+        <div className='theme-switcher'>
             <button onClick={onButtonClick} className='theme-switcher__open-btn'>
                 <ColorsIcon/>
             </button>
-            <ul className='theme-switcher__themes-list'>
-                <li><button onClick={() => setTheme('dark-blue', onButtonClick)}></button></li>
-                <li><button onClick={() => setTheme('dark', onButtonClick)}></button></li>
-                <li><button onClick={() => setTheme('light', onButtonClick)}></button></li>
-            </ul>
+            {
+                container && isThemesListOpen ?
+                createPortal(
+                    <ul className='theme-switcher__themes-list'>
+                        <li><button onClick={() => setTheme('dark-blue', onButtonClick)}></button></li>
+                        <li><button onClick={() => setTheme('dark', onButtonClick)}></button></li>
+                        <li><button onClick={() => setTheme('light', onButtonClick)}></button></li>
+                    </ul>, container
+                ) 
+                : null
+            }
         </div>
     )
 }
+
+export default forwardRef(ThemeSwitcher)

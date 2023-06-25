@@ -2,7 +2,6 @@ import { useMemo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import { selectAllLocations, setCurrentLocation } from './locationsSlice'
-import { getIsThemesListOpen } from '../../appearanceSlice'
 
 import '../../scss/animations.scss'
 import './locations.scss'
@@ -11,7 +10,6 @@ export default function LocationsList({inputValue, setInputValue}) {
     const nodeRef = useRef(null)
     const dispatch = useDispatch()
     const locations = useSelector(selectAllLocations)
-    const isThemesListOpen = useSelector(getIsThemesListOpen)
 
     function onCurrentLocationChange(data) {
         dispatch(setCurrentLocation(data))
@@ -42,13 +40,11 @@ export default function LocationsList({inputValue, setInputValue}) {
 
     const listData = useMemo(() => createListData(), [locations])
     const listItems = useMemo(() => createListItems(), [inputValue, listData])
-
-    const className = `locations${isThemesListOpen ? ' locations_short' : ''}`
     
     if(!inputValue) return
     return (
         <CSSTransition nodeRef={nodeRef} in={true} appear={true} classNames='locations' timeout={100}>
-            <div ref={nodeRef} className={className}>
+            <div ref={nodeRef} className='locations'>
                 <ul className='locations__content'>
                     {listItems.length ? listItems : <p className='locations__message'>No matches</p>}
                 </ul>

@@ -2,16 +2,14 @@
     box-sizing: border-box;
     height: 53px;
     background-color: var(--secondary-color);
-    top: calc(100% + 15px);
-    left: 0;
     margin: 0;
     padding: 0 10px;
     border-radius: 15px;
     display: flex;
     align-items: center;
-    transition: all 0.1s;
     transform-origin: top center;
-    grid-column: 1/3;
+    overflow: hidden;
+    flex-grow: 1;
     
     &_active {
         transform: scale(100%);
@@ -62,9 +60,5 @@
         &:active {
             background-color: var(--additional-color-active);
         }
-    }
-
-    &_short {
-        grid-column: 1/2;
     }
 }

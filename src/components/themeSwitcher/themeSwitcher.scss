@@ -1,8 +1,5 @@
 .theme-switcher {
     &__themes-list {
-        position: absolute;
-        bottom: -68px;
-        right: 0;
         list-style: none;
         padding: 0 10px;
         margin: 0;
@@ -12,14 +9,11 @@
         gap: 10px;
         overflow: hidden;
         transform-origin: top right;
-        transition: all 0.1s;
         height: 53px;
         display: flex;
         align-items: center;
-        
-        transform: scale(0);
-        opacity: 0;
-        visibility: hidden;
+        flex-shrink: 0;
+        order: 2;
     
         li {
             &:nth-of-type(1) {
@@ -99,11 +93,11 @@
         }
     }
 
-    &_active {
-        .theme-switcher__themes-list {
-            transform: scale(100%);
-            opacity: 1;
-            visibility: visible;
-        }
-    }
+    // &_active {
+    //     .theme-switcher__themes-list {
+    //         transform: scale(100%);
+    //         opacity: 1;
+    //         visibility: visible;
+    //     }
+    // }
 }

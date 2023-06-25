@@ -45,7 +45,6 @@ const weatherInfoSlice = createSlice({
 
 export const getStatus = state => state.weatherInfo.status
 export const getGographicalCoordinates = state => state.locations.geographicalCoordinates
-export const getSelectedDate = state => state.weatherInfo.selectedDate
 
 export const getDaysInfo = createSelector(
     state => state.weatherInfo.data.daily.time,

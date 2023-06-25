@@ -12,7 +12,7 @@
     gap: 15px;
     grid-row: 1/4;
 
-    &__hover-shadow {
+    &__shadow {
         position: absolute;
         height: 100%;
         width: 100%;
@@ -63,7 +63,7 @@
             box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
             scale: 99%;
 
-            .days-list__hover-shadow {
+            .days-list__shadow {
                 box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
             }
         }
