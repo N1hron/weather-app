@@ -10,17 +10,10 @@ const initialState = {
 export const fetchForecast = createAsyncThunk(
     'weatherInfo/fetchForecast',
     async ({lat, lon}) => {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,precipitation_probability,weathercode,cloudcover,visibility,windspeed_10m,winddirection_10m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max,winddirection_10m_dominant,precipitation_sum,precipitation_hours,precipitation_probability_mean&current_weather=true&timeformat=unixtime&timezone=auto`
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,cloudcover,visibility,windspeed_10m,winddirection_10m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max,winddirection_10m_dominant,precipitation_sum,precipitation_hours,precipitation_probability_mean&current_weather=true&timeformat=unixtime&timezone=auto&windspeed_unit=ms`
         const response = await fetch(url)
         const json = await response.json()
         return json
-    }
-)
-
-export const fetchMoonPhase = createAsyncThunk(
-    'weatherInfo/fetchMoonPhase',
-    async () => {
-
     }
 )
 
@@ -45,6 +38,34 @@ const weatherInfoSlice = createSlice({
 
 export const getStatus = state => state.weatherInfo.status
 export const getGographicalCoordinates = state => state.locations.geographicalCoordinates
+
+export const getCurrentWeather = createSelector(
+    state => state.weatherInfo.data.current_weather.time,
+    state => state.weatherInfo.data.utc_offset_seconds,
+    state => state.weatherInfo.data.hourly,
+    (timestamp, utcOffset, hourlyForecast) => {
+        const {weekday, day, hours, minutes, utcString} = getLocalDate(timestamp, utcOffset)
+        const index = Number(hours)
+        console.log(index)
+        return {
+            weekday: weekday.toLowerCase(), 
+            day, 
+            hours, 
+            minutes,
+            utcString,
+            weatherCode: hourlyForecast.weathercode[index],
+            temperature: hourlyForecast.temperature_2m[index],
+            apparentTemperature: hourlyForecast.apparent_temperature[index],
+            humidity: hourlyForecast.relativehumidity_2m[index],
+            precipitation: hourlyForecast.precipitation[index],
+            precipitationProbability: hourlyForecast.precipitation_probability[index],
+            windSpeed: hourlyForecast.windspeed_10m[index],
+            windDirection: hourlyForecast.winddirection_10m[index],
+            cloudCover: hourlyForecast.cloudcover[index],
+            visibility: hourlyForecast.visibility[index]
+        }
+    }
+)
 
 export const getDaysInfo = createSelector(
     state => state.weatherInfo.data.daily.time,

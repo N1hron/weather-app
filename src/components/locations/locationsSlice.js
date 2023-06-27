@@ -28,6 +28,9 @@ export const fetchGeographicalCoordinates = createAsyncThunk(
     }
 )
 
+const setLoading = state => {state.status = 'loading'}
+const setFailure = state => {state.status = 'failure'}
+
 const locationsSlice = createSlice({
     name: 'locations',
     initialState,
@@ -36,18 +39,18 @@ const locationsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder 
-            .addCase(fetchLocations.pending, state => {state.status = 'loading'})
+            .addCase(fetchLocations.pending, setLoading)
             .addCase(fetchLocations.fulfilled, (state, action) => {
-                state.status = 'success'
                 locationsAdapter.setAll(state, action.payload)
+                state.status = 'success'
             })
-            .addCase(fetchLocations.rejected, state => {state.status = 'failure'})
-            .addCase(fetchGeographicalCoordinates.pending, state => {state.status = 'loading'})
+            .addCase(fetchLocations.rejected, setFailure)
+            .addCase(fetchGeographicalCoordinates.pending, setLoading)
             .addCase(fetchGeographicalCoordinates.fulfilled, (state, action) => {
                 state.geographicalCoordinates = action.payload
                 state.status = 'success'
             })
-            .addCase(fetchGeographicalCoordinates.rejected, state => {state.status = 'failure'})
+            .addCase(fetchGeographicalCoordinates.rejected, setFailure)
     }
 })
 
