@@ -8,10 +8,10 @@ import { ReactComponent as ColorsIcon } from '../../assets/icons/color-filter.sv
 
 import './themeSwitcher.scss'
 
-function ThemeSwitcher(props, ref) {
+const ThemeSwitcher = forwardRef(function ThemeSwitcher(_, ref) {
     const dispatch = useDispatch()
-    const isThemesListOpen = useSelector(state => state.appearance.themesListOpen)
     const { setTheme } = useThemeSetter()
+    const isThemesListOpen = useSelector(state => state.appearance.themesListOpen)
     const container = ref.current
 
     function onButtonClick() {
@@ -36,6 +36,6 @@ function ThemeSwitcher(props, ref) {
             }
         </div>
     )
-}
+})
 
-export default forwardRef(ThemeSwitcher)
+export default ThemeSwitcher

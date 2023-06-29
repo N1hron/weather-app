@@ -1,7 +1,7 @@
+@import '../../scss/mixins';
+
 .hourly-forecast {
-    width: 100%;
-    background-color: var(--secondary-color);
-    border-radius: 15px;
+    @include card-base;
     grid-column: 2/6;
     grid-row: 3/4;
 }

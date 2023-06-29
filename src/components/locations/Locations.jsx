@@ -1,9 +1,7 @@
 import { useMemo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { CSSTransition } from 'react-transition-group'
 import { selectAllLocations, setCurrentLocation } from './locationsSlice'
 
-import '../../scss/animations.scss'
 import './locations.scss'
 
 export default function LocationsList({inputValue, setInputValue}) {
@@ -43,12 +41,10 @@ export default function LocationsList({inputValue, setInputValue}) {
     
     if(!inputValue) return
     return (
-        <CSSTransition nodeRef={nodeRef} in={true} appear={true} classNames='locations' timeout={100}>
-            <div ref={nodeRef} className='locations'>
-                <ul className='locations__content'>
-                    {listItems.length ? listItems : <p className='locations__message'>No matches</p>}
-                </ul>
-            </div>
-        </CSSTransition>
+        <div ref={nodeRef} className='locations'>
+            <ul className='locations__content'>
+                {listItems.length ? listItems : <p className='locations__message'>No matches</p>}
+            </ul>
+        </div>
     )
 }

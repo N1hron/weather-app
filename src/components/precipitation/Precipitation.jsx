@@ -19,7 +19,7 @@ export default function Precipitation() {
                 {sum}<p><span>mm</span><span>sum</span></p>
             </div>
             <div className='precipitation__probability'>
-                <h4>day probability</h4>
+                <span>day probability</span>
                 <div className='precipitation__probability-container'>
                     <p>{probability}<span>%</span></p>
                     <div className='precipitation__container'>

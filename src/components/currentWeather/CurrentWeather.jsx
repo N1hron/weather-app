@@ -13,7 +13,7 @@ import './currentWeather.scss'
 
 export default function CurrentWeather() {
     const weather = useSelector(getCurrentWeather)
-    console.log(weather)
+    
     if (hasNullUndefinedOrNan(weather)) return <div className='current'></div>
 
     const {

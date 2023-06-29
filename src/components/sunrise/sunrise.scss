@@ -1,17 +1,22 @@
+@import '../../scss/mixins';
+
 .sunrise {
-    grid-column: 3/4;
-    grid-row: 2/3;
-    background-color: var(--secondary-color);
-    border-radius: 15px;
-    padding: 15px;
+    @include card-base;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    grid-column: 3/4;
+    grid-row: 2/3;
 
     svg {
         width: 70px;
         height: 70px;
+
+        path {
+            stroke: #ff8329;
+        }
+
         path {
             &:nth-last-child(1) {
                 stroke: var(--icon-color);
@@ -20,21 +25,7 @@
     }
 
     p {
-        margin: 0;
-        color: var(--font-main-color);
         font-size: 20px;
-
-        span {
-            opacity: 0.8;
-            font-size: 18px;
-        }
-    }
-    
-    h3 {
-        font-size: 30px;
-        font-weight: 400;
-        color: var(--font-main-color);
-        margin: 0;
     }
 }
 

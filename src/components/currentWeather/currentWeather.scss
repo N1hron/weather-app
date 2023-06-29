@@ -1,12 +1,10 @@
+@import '../../scss/mixins';
+
 .current {
-    width: 100%;
-    background-color: var(--secondary-color);
+    @include card-base;
     border: 1px solid var(--additional-color);
-    border-radius: 15px;
     grid-column: 2/3;
     grid-row: 1/3;
-    padding: 15px;
-    color: var(--font-main-color);
 
     header {
         display: flex;
@@ -18,38 +16,12 @@
         }
     }
 
-    span {
-        font-size: 20px;
-        opacity: 0.8;
-    }
-
-    &__title {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-
-        span {
-            font-size: 0.8em;
-            opacity: 0.8;
-        }
-
-        svg {
-            max-width: 70px;
-            max-height: 70px;
-
-            path {
-                stroke: var(--icon-color);
-            }
-        }
-    }
-
     &__item {
         display: flex;
         flex-direction: column;
         box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
         padding: 12px;
         border-radius: 15px;
-        max-height: 130px;
 
         &-heading {
             display: flex;
@@ -62,32 +34,18 @@
             }
         }
 
-        svg {
-            path {
-                stroke: var(--icon-color);
-            }
-        }
-
         p {
             margin: 0;
             font-weight: 700;
 
             span {
-                font-size: 0.8em;
+                font-size: 30px;
                 font-weight: 400;
             }
         }
 
         &:nth-child(1) {
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
             width: 129.5px;
-            padding: 20px;
-            
-            svg {
-                height: 100%;
-            }
         }
 
         &:nth-child(2) {         
@@ -159,20 +117,13 @@
     }
 
     &__items {
-        margin: 15px 0 0;
-        padding: 0;
+        margin-top: 15px;
         font-size: 50px;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: space-between;
         gap: 15px;
-    }
-
-    h3 {
-        margin: 0;
-        font-size: 30px;
-        font-weight: 400;
     }
 }
 

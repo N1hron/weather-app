@@ -1,12 +1,12 @@
+@import '../../scss/mixins';
+
 .uv-index {
-    background-color: var(--secondary-color);
-    border-radius: 15px;
-    grid-column: 3/5;
-    grid-row: 1/2;
-    padding: 15px;
+    @include card-base;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    grid-column: 3/5;
+    grid-row: 1/2;
 
     &__pointer {
         position: absolute;
@@ -42,20 +42,7 @@
         font-weight: 700;
 
         span {
-            font-weight: 400;
             font-size: 40px;
-        }
-    }
-
-    h3 {
-        color: var(--font-main-color);
-        margin: 0;
-        font-size: 30px;
-        font-weight: 400;
-
-        span {
-            font-size: 18px;
-            opacity: 0.8;
         }
     }
 }

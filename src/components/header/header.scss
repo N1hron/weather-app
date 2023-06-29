@@ -1,15 +1,15 @@
 .header {
     position: relative;
-    width: 100%;
     display: grid;
-    gap: 15px;
     grid-template-rows: minmax(96px, auto) 53px;
     grid-template-columns: 100%;
+    width: 100%;
+    gap: 15px;
 
     &__bottom {
         display: flex;
-        gap: 15px;
         justify-content: flex-end;
+        gap: 15px;
     }
 
     &__top {
@@ -73,13 +73,11 @@
         position: relative;
 
         &::placeholder {
-            color: var(--font-main-color);
             opacity: 1;
         }
     }
 
     &__logo {
-        color: var(--font-main-color);
         font-weight: 700;
         font-size: 40px;
     }

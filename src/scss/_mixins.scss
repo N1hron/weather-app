@@ -1,0 +1,5 @@
+@mixin card-base {
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    padding: 15px;
+}

@@ -1,57 +1,40 @@
 .locations {
-    box-sizing: border-box;
-    height: 53px;
-    background-color: var(--secondary-color);
-    margin: 0;
-    padding: 0 10px;
-    border-radius: 15px;
     display: flex;
     align-items: center;
-    transform-origin: top center;
+    height: 53px;
+    background-color: var(--secondary-color);
+    padding: 0 10px;
+    border-radius: 15px;
     overflow: hidden;
     flex-grow: 1;
-    
-    &_active {
-        transform: scale(100%);
-        opacity: 1;
-        visibility: visible;
-    }
      
     &__content {
-        overflow: scroll;
-        scrollbar-width: none;
-        gap: 20px;
-        transition: all 0.05s;
-        list-style: none;
         display: flex;
         align-items: center;
-        margin: 0;
-        padding: 0;
+        gap: 20px;
         border-radius: 5px;
+        overflow: scroll;
+        scrollbar-width: none;
+        transition: all 0.05s;
     }
 
     &__message {
         position: absolute;
-        padding: 5px 10px;
-        left: 0;
-        font-size: 35px;
-        color: var(--font-main-color);
-        text-align: center;
         width: 100%;
-        padding: 0;
-        margin: 0;
+        left: 0;
+        text-align: center;
+        font-size: 30px;
     }
 
     &__item {
-        color: var(--font-secondary-color);
-        font-size: 20px;
-        cursor: pointer;
-        background-color: var(--additional-color);
         padding: 5px 10px;
         border-radius: 5px;
-        transition: all 0.1s;
+        font-size: 20px;
+        background-color: var(--additional-color);
+        color: var(--font-secondary-color);
         flex-shrink: 0;
-        overflow: visible;
+        transition: all 0.1s;
+        cursor: pointer;
 
         &:hover {
             background-color: var(--additional-color-hover);

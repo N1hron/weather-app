@@ -1,11 +1,10 @@
+@import '../../scss/mixins';
+
 .wind {
+    @include card-base;
     position: relative;
-    background-color: var(--secondary-color);
-    border-radius: 15px;
     grid-column: 5/6;
     grid-row: 1/2;
-    padding: 15px;
-    color: var(--font-main-color);
 
     &__arrow {
         position: absolute;
@@ -17,10 +16,6 @@
         transform: translate(-50%, -50%) rotate(0deg);
         opacity: 0.8;
         transition: all 0.1s ease-out;
-
-        path {
-            stroke: var(--icon-color);
-        }
     }
 
     &__direction {
@@ -38,6 +33,7 @@
             background-color: var(--secondary-color);
             padding: 2px;
             font-size: 30px;
+            opacity: 1;
         }
 
         &-N {
@@ -83,13 +79,6 @@
         opacity: 0.8;
         height: 90%;
         font-weight: 400;
-    }
-
-    h3 {
-        font-size: 30px;
-        font-weight: 400;
-        
-        margin: 0;
     }
 }
 
