@@ -5,7 +5,6 @@ import store from './store'
 import App from './components/app/App'
 
 import 'normalize.css'
-import './main.scss'
 
 const root = createRoot(document.querySelector('#root'))
 root.render(

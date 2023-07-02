@@ -8,6 +8,7 @@ import { ReactComponent as ColorsIcon } from '../../assets/icons/color-filter.sv
 
 import './themeSwitcher.scss'
 
+
 const ThemeSwitcher = forwardRef(function ThemeSwitcher(_, ref) {
     const dispatch = useDispatch()
     const { setTheme } = useThemeSetter()

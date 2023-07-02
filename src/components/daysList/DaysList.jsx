@@ -6,6 +6,7 @@ import getLocalDate from '../../utils/getLocalDate'
 
 import './daysList.scss'
 
+
 export default function DaysList() {
     const dispatch = useDispatch()
     const daysRef = useRef([])

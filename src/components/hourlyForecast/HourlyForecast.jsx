@@ -1,5 +1,6 @@
 import './hourlyForecast.scss'
 
+
 export default function HourlyForecast() {
 
     return (

@@ -4,6 +4,7 @@ import hasNullOrUndefined from '../../utils/hasNullUndefinedOrNan'
 
 import './uvIndex.scss'
 
+
 export default function UVIndex() {
     const uvIndex = useSelector(getUVIndex)
 

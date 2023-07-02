@@ -11,6 +11,7 @@ import { ReactComponent as VisibilityIcon } from '../../assets/icons/fog.svg'
 
 import './currentWeather.scss'
 
+
 export default function CurrentWeather() {
     const weather = useSelector(getCurrentWeather)
     
@@ -42,9 +43,6 @@ export default function CurrentWeather() {
             </header>
             <ul className='current__items'>
                 <li className='current__item'>
-                    {icon}
-                </li>
-                <li className='current__item'>
                     <div className='current__item-heading'>
                         <span>temperature</span>
                         <TemperatureIcon/>
@@ -75,15 +73,18 @@ export default function CurrentWeather() {
                     <span>{precipitationProbability} % probability</span>
                 </li>
                 <li className='current__item'>
-                    <span>{weekday} {day}</span>
-                    <span>{hours}:{minutes} UTC{utcString}</span>
-                </li>
-                <li className='current__item'>
                     <div className='current__item-heading'>
                         <span>visibility</span>
                         <VisibilityIcon/>
                     </div>
                     <p>{(visibility / 1000).toFixed(0)} <span>km</span></p>
+                </li>
+                <li className='current__item'>
+                    {icon}
+                    <p>
+                        <span>{weekday} {day}</span><br/>
+                        <span>{hours}:{minutes} UTC{utcString}</span>
+                    </p>
                 </li>
             </ul>
         </div>

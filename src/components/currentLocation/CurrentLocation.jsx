@@ -1,11 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+
 import { fetchGeographicalCoordinates, getCurrentLocation } from '../locations/locationsSlice'
 
 import './currentLocation.scss'
 
 export default function CurrentLocation({inputValue}) {
-    const nodeRef = useRef(null)
     const dispatch = useDispatch()
     const currentLocation = useSelector(getCurrentLocation)
 
@@ -21,7 +21,7 @@ export default function CurrentLocation({inputValue}) {
 
     if(!title || inputValue) return
     return (
-        <div ref={nodeRef} className='current-location'> 
+        <div className='current-location'> 
             <h2>{title}</h2>
         </div>
     )

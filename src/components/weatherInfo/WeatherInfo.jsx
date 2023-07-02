@@ -6,12 +6,14 @@ import DaysList from '../daysList/DaysList'
 import CurrentWeather from '../currentWeather/CurrentWeather'
 import UVIndex from '../uvIndex/UVIndex'
 import Wind from '../wind/Wind'
-import Sunrise from '../sunrise/Sunrise'
-import Sunset from '../sunset/Sunset'
+import Sunrise from '../twilight/Sunrise'
+import Sunset from '../twilight/Sunset'
 import Precipitation from '../precipitation/Precipitation'
 import HourlyForecast from '../hourlyForecast/HourlyForecast'
 
+
 import './weatherInfo.scss'
+
 
 export default function WeatherInfo() {
     const dispatch = useDispatch()

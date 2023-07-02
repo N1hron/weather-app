@@ -1,11 +1,11 @@
-import { useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectAllLocations, setCurrentLocation } from './locationsSlice'
 
 import './locations.scss'
 
+
 export default function LocationsList({inputValue, setInputValue}) {
-    const nodeRef = useRef(null)
     const dispatch = useDispatch()
     const locations = useSelector(selectAllLocations)
 
@@ -36,12 +36,12 @@ export default function LocationsList({inputValue, setInputValue}) {
         })
     }
 
-    const listData = useMemo(() => createListData(), [locations])
-    const listItems = useMemo(() => createListItems(), [inputValue, listData])
+    const listData = useMemo(createListData, [locations])
+    const listItems = useMemo(createListItems, [inputValue, listData])
     
     if(!inputValue) return
     return (
-        <div ref={nodeRef} className='locations'>
+        <div className='locations'>
             <ul className='locations__content'>
                 {listItems.length ? listItems : <p className='locations__message'>No matches</p>}
             </ul>
