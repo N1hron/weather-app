@@ -19,10 +19,11 @@
     &__item {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
         padding: 12px;
         border-radius: 15px;
-        max-height: 129.5px;
+        max-height: 120px;
 
         &-heading {
             display: flex;
@@ -117,6 +118,7 @@
 
             span {
                 font-size: 30px;
+                white-space: nowrap;
             }
 
             svg {
@@ -131,8 +133,8 @@
         font-size: 40px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: space-between;
+        justify-content: space-around;
+        align-content: center;
         gap: 15px;
         height: calc(100% - 49.5px);
     }
