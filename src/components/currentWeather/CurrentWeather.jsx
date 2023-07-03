@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux'
 import { getCurrentWeather } from '../weatherInfo/weatherInfoSlice'
 import getWeatherByWMO from '../../utils/getWeatherByWMO'
 import hasNullUndefinedOrNan from '../../utils/hasNullUndefinedOrNan'
+import setHumidityDescription from '../../utils/setHumidityDescription'
+import setWindDescription from '../../utils/setWindDescription'
+import setVisibilityDescription from '../../utils/setVisibilityDescription'
 
 import { ReactComponent as TemperatureIcon } from '../../assets/icons/thermometer.svg'
 import { ReactComponent as WindIcon } from '../../assets/icons/wind.svg'
@@ -17,25 +20,8 @@ export default function CurrentWeather() {
     const weather = useSelector(getCurrentWeather)
     
     if (hasNullUndefinedOrNan(weather)) return <div className='current'></div>
-
-    const {
-        weekday, 
-        month,
-        day, 
-        hours,
-        minutes, 
-        utcString,
-        temperature, 
-        apparentTemperature, 
-        weatherCode, 
-        windSpeed,
-        humidity,
-        precipitation,
-        precipitationProbability,
-        visibility
-    } = weather
           
-    const {description, icon} = getWeatherByWMO(weatherCode)
+    const {description, icon} = getWeatherByWMO(weather.weatherCode)
 
     return (
         <div className='current'>
@@ -49,43 +35,46 @@ export default function CurrentWeather() {
                         <span>temperature</span>
                         <TemperatureIcon/>
                     </div>
-                    <p>{temperature} <span>&#8451;</span></p>
-                    <span>feels like {apparentTemperature} &#8451;</span>
+                    <p>{weather.temperature} <span>℃</span></p>
+                    <span>feels like {weather.apparentTemperature}℃</span>
                 </li>
                 <li className='current__item'>
                     <div className='current__item-heading'>
                         <span>wind</span>
                         <WindIcon/>
                     </div>
-                    <p>{windSpeed} <span>m/s</span></p>
+                    <p>{weather.windSpeed} <span>m/s</span></p>
+                    <span>{setWindDescription(weather.windSpeed).toLowerCase()}</span>
                 </li>
                 <li className='current__item'>
                     <div className='current__item-heading'>
                         <span>humidity</span>
                         <HumidityIcon/>
                     </div>
-                    <p>{humidity} <span>%</span></p>
+                    <p>{weather.humidity} <span>%</span></p>
+                    <span>{setHumidityDescription(weather.humidity).toLowerCase()}</span>
                 </li>
                 <li className='current__item'>
                     <div className='current__item-heading'>
                         <span>precipitation</span>
                         <PrecipitationIcon/>
                     </div>
-                    <p>{precipitation} <span>mm</span></p>
-                    <span>{precipitationProbability} % probability</span>
+                    <p>{weather.precipitation} <span>mm</span></p>
+                    <span>{weather.precipitationProbability}% probability</span>
                 </li>
                 <li className='current__item'>
                     <div className='current__item-heading'>
                         <span>visibility</span>
                         <VisibilityIcon/>
                     </div>
-                    <p>{(visibility / 1000).toFixed(0)} <span>km</span></p>
+                    <p>{(weather.visibility / 1000).toFixed(2)} <span>km</span></p>
+                    <span>{setVisibilityDescription(weather.visibility).toLowerCase()}</span>
                 </li>
                 <li className='current__item'>
                     {icon}
                     <p>
-                        <span>{weekday} {day}.{month}</span>
-                        <span>{hours}:{minutes} UTC{utcString}</span>
+                        <span>{weather.weekday} {weather.day}.{weather.month}</span>
+                        <span>{weather.hours}:{weather.minutes} UTC{weather.utcString}</span>
                     </p>
                 </li>
             </ul>

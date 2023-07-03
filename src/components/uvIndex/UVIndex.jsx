@@ -9,7 +9,7 @@ import './uvIndex.scss'
 export default function UVIndex() {
     const uvIndex = useSelector(getUVIndex)
 
-    function makeDescription(uvIndex) {
+    function setDescription(uvIndex) {
         if(uvIndex <= 2) return 'Low'
         else if(uvIndex <= 5) return 'Moderate'
         else if(uvIndex <= 7) return 'High'
@@ -29,7 +29,7 @@ export default function UVIndex() {
 
     if(hasNullOrUndefined(uvIndex)) return <div className='uv-index'></div>
 
-    const description = makeDescription(uvIndex),
+    const description = setDescription(uvIndex),
           positionStyles = getPointerPositionStyle(uvIndex)
 
     return (
