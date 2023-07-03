@@ -5,19 +5,19 @@ import { fetchGeographicalCoordinates, getCurrentLocation } from '../locations/l
 
 import './currentLocation.scss'
 
+
 export default function CurrentLocation({inputValue}) {
     const dispatch = useDispatch()
     const currentLocation = useSelector(getCurrentLocation)
 
     const {city, country, countryCode} = currentLocation
     
-    useEffect(getGeographicalCoordinates, [city, countryCode])
-
-    function getGeographicalCoordinates() {
+    useEffect(() => {
         if(city && countryCode) dispatch(fetchGeographicalCoordinates({city, countryCode}))
-    }
+        // eslint-disable-next-line
+    }, [city, countryCode])
 
-    const title = Object.keys(currentLocation).length ? `${city}, ${country}` : ''
+    const title = (city && country) ? `${city}, ${country}` : ''
 
     if(!title || inputValue) return
     return (

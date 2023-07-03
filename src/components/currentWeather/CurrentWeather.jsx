@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+
 import { getCurrentWeather } from '../weatherInfo/weatherInfoSlice'
 import getWeatherByWMO from '../../utils/getWeatherByWMO'
 import hasNullUndefinedOrNan from '../../utils/hasNullUndefinedOrNan'
@@ -19,6 +20,7 @@ export default function CurrentWeather() {
 
     const {
         weekday, 
+        month,
         day, 
         hours,
         minutes, 
@@ -82,7 +84,7 @@ export default function CurrentWeather() {
                 <li className='current__item'>
                     {icon}
                     <p>
-                        <span>{weekday} {day}</span><br/>
+                        <span>{weekday} {day}.{month}</span>
                         <span>{hours}:{minutes} UTC{utcString}</span>
                     </p>
                 </li>

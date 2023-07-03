@@ -1,20 +1,25 @@
 const check = (value) => [null, undefined].includes(value) || Number.isNaN(value)
 
-export default function hasNullUndefinedOrNan(value) {
-    if (check(value)) return true // May return true if value is primitive
+export default function hasNullUndefinedOrNan(value, shallow = true) {
+    // May return true if value is primitive:
+    if (check(value)) return true 
 
-    else if (Array.isArray(value)) { // If value is Array
+    // If value is Array then check every value:
+    else if (Array.isArray(value)) { 
         for(let item of value) {
-            if(check(item)) return true
+            if (hasNullUndefinedOrNan(item) && !shallow) return true
+            else if(check(item)) return true
         }
     }
 
-    else if (typeof value === 'object') { // If value is Object
+    // If value is Object then check every value:
+    else if (typeof value === 'object') { 
         for(let item of Object.values(value)) {
-            if(check(item)) return true
+            if (hasNullUndefinedOrNan(item) && !shallow) return true
+            else if(check(item)) return true
         }
     }
 
     return false
 }
- 
+

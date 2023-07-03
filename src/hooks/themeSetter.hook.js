@@ -1,22 +1,15 @@
-import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { changeTheme } from '../appearanceSlice'
 
+import useLocalStorage from './localStorage.hook'
 import { themes } from '../data'
 
+
 export default function useThemeSetter() {
-    const dispatch = useDispatch()
-    const currentTheme = useSelector(state => state.appearance.currentTheme)
+    const [value, setValue] = useLocalStorage('theme', 'dark-blue')
 
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('theme')
-        if(savedTheme) {
-            applyTheme(savedTheme)
-            dispatch(changeTheme(savedTheme))
-        }
-    }, [])
+    useEffect(() => {changeColors(value)}, [value])
 
-    function applyTheme(theme) {
+    const changeColors = (theme) => {
         const themeData = themes[theme]
         const rootStyle = document.documentElement.style
         
@@ -32,11 +25,7 @@ export default function useThemeSetter() {
     }
 
     function setTheme(theme, callback) {
-        if(currentTheme != theme) {
-            dispatch(changeTheme(theme))
-            applyTheme(theme)
-            localStorage.setItem('theme', theme)
-        }
+        if(theme !== value) setValue(theme)
         if(callback) callback()
     }
 

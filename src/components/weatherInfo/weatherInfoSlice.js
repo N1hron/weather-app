@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import getLocalDate from '../../utils/getLocalDate'
+import makeApiCall from '../../utils/makeApiCall'
 
 const initialState = {
     status: 'idle',
@@ -10,10 +11,9 @@ const initialState = {
 export const fetchForecast = createAsyncThunk(
     'weatherInfo/fetchForecast',
     async ({lat, lon}) => {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,cloudcover,visibility,windspeed_10m,winddirection_10m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max,winddirection_10m_dominant,precipitation_sum,precipitation_hours,precipitation_probability_mean&current_weather=true&timeformat=unixtime&timezone=auto&windspeed_unit=ms`
-        const response = await fetch(url)
-        const json = await response.json()
-        return json
+        try {
+            return makeApiCall(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,cloudcover,visibility,windspeed_10m,winddirection_10m&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,windspeed_10m_max,winddirection_10m_dominant,precipitation_sum,precipitation_hours,precipitation_probability_mean&current_weather=true&timeformat=unixtime&timezone=auto&windspeed_unit=ms`)
+        } catch(e) {}
     }
 )
 
@@ -32,7 +32,10 @@ const weatherInfoSlice = createSlice({
                 state.status = 'success'
                 
             })
-            .addCase(fetchForecast.rejected, (state) => {state.status = 'failure'})
+            .addCase(fetchForecast.rejected, (state, action) => {
+                state.status = 'error'
+                state.message = action.error.message
+            })
     }
 })
 
@@ -44,11 +47,11 @@ export const getCurrentWeather = createSelector(
     state => state.weatherInfo.data.utc_offset_seconds,
     state => state.weatherInfo.data.hourly,
     (timestamp, utcOffset, hourlyForecast) => {
-        const {weekday, day, hours, minutes, utcString} = getLocalDate(timestamp, utcOffset)
+        const {weekday, month, day, hours, minutes, utcString} = getLocalDate(timestamp, utcOffset)
         const index = Number(hours)
-        console.log(index)
         return {
             weekday: weekday.toLowerCase(), 
+            month,
             day, 
             hours, 
             minutes,

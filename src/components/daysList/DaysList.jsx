@@ -1,5 +1,6 @@
 import { useMemo, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+
 import { setDate, getDaysInfo } from '../weatherInfo/weatherInfoSlice'
 import getWeatherByWMO from '../../utils/getWeatherByWMO'
 import getLocalDate from '../../utils/getLocalDate'

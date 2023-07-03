@@ -3,6 +3,7 @@ import WeatherInfo from '../weatherInfo/WeatherInfo'
 
 import './app.scss'
 
+
 function App() {
   return (
     <>

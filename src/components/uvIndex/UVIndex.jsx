@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+
 import { getUVIndex } from '../weatherInfo/weatherInfoSlice'
 import hasNullOrUndefined from '../../utils/hasNullUndefinedOrNan'
 

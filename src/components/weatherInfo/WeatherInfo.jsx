@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { fetchForecast, getStatus, getGographicalCoordinates, clearDate } from './weatherInfoSlice'
 
 import DaysList from '../daysList/DaysList'
@@ -10,7 +11,6 @@ import Sunrise from '../twilight/Sunrise'
 import Sunset from '../twilight/Sunset'
 import Precipitation from '../precipitation/Precipitation'
 import HourlyForecast from '../hourlyForecast/HourlyForecast'
-
 
 import './weatherInfo.scss'
 

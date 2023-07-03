@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux'
+
 import { getPrecipitation } from '../weatherInfo/weatherInfoSlice'
 import hasNullUndefinedOrNan from '../../utils/hasNullUndefinedOrNan'
 
 import './precipitation.scss'
+
 
 export default function Precipitation() {
     const precipitationData = useSelector(getPrecipitation)

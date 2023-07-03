@@ -5,7 +5,7 @@ import './twilight.scss'
 
 export default function Twilight({data, type}) {
     const {hours, minutes, utcString, icon} = data
-    
+
     return (
         <div className={`twilight twilight_${type.toLowerCase()}`}>
             {
