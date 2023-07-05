@@ -2,6 +2,7 @@ import hasNullUndefinedOrNan from '../../utils/hasNullUndefinedOrNan'
 
 import './twilight.scss'
 
+import CardHeader from '../cardHeader/CardHeader'
 
 export default function Twilight({data, type}) {
     const {hours, minutes, utcString, icon} = data
@@ -11,7 +12,7 @@ export default function Twilight({data, type}) {
             {
                 !hasNullUndefinedOrNan(data) ? 
                 <>
-                    <h3>{type}</h3>
+                    <CardHeader title={type}/>
                     {icon}
                     <p>{`${hours}:${minutes}`} <span>UTC{utcString}</span></p>
                 </>

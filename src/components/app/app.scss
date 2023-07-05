@@ -1,9 +1,12 @@
+@import '../../scss/line';
+
 :root {
     --main-color: #1d232f;
     --secondary-color: #212733;
     --additional-color: #272b68;
     --additional-color-hover: #24285e;
     --additional-color-active: #202353;
+    --small-card-bg-color: rgba($color: #272b68, $alpha: 0.5);
     --border-color: #FFFFFF;
     --font-main-color: #FFFFFF;
     --font-secondary-color: #FFFFFF;
@@ -24,7 +27,7 @@ body {
     min-height: 100vh;
     max-width: 1920px;
     margin: 0 auto;
-    padding: 15px 30px 0;
+    padding: 15px 30px;
     display: flex;
     flex-direction: column;
     gap: 15px;

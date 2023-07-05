@@ -22,6 +22,7 @@ export default function useThemeSetter() {
         rootStyle.setProperty('--font-main-color', themeData.fontMainColor)
         rootStyle.setProperty('--font-secondary-color', themeData.fontSecondaryColor)
         rootStyle.setProperty('--icon-color', themeData.iconColor)
+        rootStyle.setProperty('--small-card-bg-color', themeData.smallCardBgColor)
     }
 
     function setTheme(theme, callback) {

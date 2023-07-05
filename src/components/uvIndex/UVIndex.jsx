@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { getUVIndex } from '../weatherInfo/weatherInfoSlice'
 import hasNullOrUndefined from '../../utils/hasNullUndefinedOrNan'
 
+import CardHeader from '../cardHeader/CardHeader'
+
 import './uvIndex.scss'
 
 
@@ -34,7 +36,10 @@ export default function UVIndex() {
 
     return (
         <div className='uv-index'>
-            <h3>UV Index <span>day max</span></h3>
+            <CardHeader 
+                title='UV Index'
+                subtitle='day max'
+            />
             <p>{uvIndex}<span>{description}</span></p>
             <div className='uv-index__measure'>
                 <div style={positionStyles} className='uv-index__pointer'></div>

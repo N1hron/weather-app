@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { getPrecipitation } from '../weatherInfo/weatherInfoSlice'
 import hasNullUndefinedOrNan from '../../utils/hasNullUndefinedOrNan'
 
+import CardHeader from '../cardHeader/CardHeader'
+
 import './precipitation.scss'
 
 
@@ -13,7 +15,7 @@ export default function Precipitation() {
     const [hours, sum, probability] = precipitationData
     return (
         <div className='precipitation'>
-            <h3>Precipitation</h3>
+            <CardHeader title='Precipitation'/>
             <div className='precipitation__text-item'>
                 {hours}<p><span>hours</span><span>/24</span></p>
             </div>
@@ -21,9 +23,11 @@ export default function Precipitation() {
                 {sum}<p><span>mm</span><span>sum</span></p>
             </div>
             <div className='precipitation__probability'>
-                <span>day probability</span>
+                <span className='precipitation__probability-title'>day probability</span>
                 <div className='precipitation__probability-container'>
-                    <p>{probability}<span>%</span></p>
+                    <div className='precipitation__text-item'>
+                        {probability}<p><span>%</span><span>mean</span></p>
+                    </div>  
                     <div className='precipitation__container'>
                         <div style={{height: `${probability}%`}} className='precipitation__filling'></div>
                     </div>

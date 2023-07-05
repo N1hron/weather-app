@@ -35,7 +35,7 @@ export default function Header() {
                 <Locations inputValue={deferredInputValue} setInputValue={setInputValue}/>
                 <CurrentLocation inputValue={deferredInputValue}/>
             </div>
-            <div className='header__line-wrapper'><div className='header__line'></div></div>
+            <div className='line-wrapper'><div className='line'></div></div>
         </header>
     )
 }

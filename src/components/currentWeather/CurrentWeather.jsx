@@ -7,6 +7,8 @@ import setHumidityDescription from '../../utils/setHumidityDescription'
 import setWindDescription from '../../utils/setWindDescription'
 import setVisibilityDescription from '../../utils/setVisibilityDescription'
 
+import CardHeader from '../cardHeader/CardHeader'
+import CurrentWeatherItem from './CurrentWeatherItem'
 import { ReactComponent as TemperatureIcon } from '../../assets/icons/thermometer.svg'
 import { ReactComponent as WindIcon } from '../../assets/icons/wind.svg'
 import { ReactComponent as HumidityIcon } from '../../assets/icons/water-drop.svg'
@@ -25,51 +27,46 @@ export default function CurrentWeather() {
 
     return (
         <div className='current'>
-            <header>
-                <h3>Current Weather</h3>
-                <span>{description.toLowerCase()}</span>
-            </header>
+            <CardHeader
+                title='Current Weather'
+                description={description.toLowerCase()}
+            />
             <ul className='current__items'>
-                <li className='current__item'>
-                    <div className='current__item-heading'>
-                        <span>temperature</span>
-                        <TemperatureIcon/>
-                    </div>
-                    <p>{weather.temperature} <span>℃</span></p>
-                    <span>feels like {weather.apparentTemperature}℃</span>
-                </li>
-                <li className='current__item'>
-                    <div className='current__item-heading'>
-                        <span>wind</span>
-                        <WindIcon/>
-                    </div>
-                    <p>{weather.windSpeed} <span>m/s</span></p>
-                    <span>{setWindDescription(weather.windSpeed).toLowerCase()}</span>
-                </li>
-                <li className='current__item'>
-                    <div className='current__item-heading'>
-                        <span>humidity</span>
-                        <HumidityIcon/>
-                    </div>
-                    <p>{weather.humidity} <span>%</span></p>
-                    <span>{setHumidityDescription(weather.humidity).toLowerCase()}</span>
-                </li>
-                <li className='current__item'>
-                    <div className='current__item-heading'>
-                        <span>precipitation</span>
-                        <PrecipitationIcon/>
-                    </div>
-                    <p>{weather.precipitation} <span>mm</span></p>
-                    <span>{weather.precipitationProbability}% probability</span>
-                </li>
-                <li className='current__item'>
-                    <div className='current__item-heading'>
-                        <span>visibility</span>
-                        <VisibilityIcon/>
-                    </div>
-                    <p>{(weather.visibility / 1000).toFixed(2)} <span>km</span></p>
-                    <span>{setVisibilityDescription(weather.visibility).toLowerCase()}</span>
-                </li>
+                <CurrentWeatherItem
+                    title='temperature'
+                    icon={<TemperatureIcon/>}
+                    info={weather.temperature}
+                    unit='℃'
+                    description={`feels like ${weather.apparentTemperature}℃`}
+                />
+                <CurrentWeatherItem
+                    title='wind'
+                    icon={<WindIcon/>}
+                    info={weather.windSpeed}
+                    unit='m/s'
+                    description={setWindDescription(weather.windSpeed).toLowerCase()}
+                />
+                <CurrentWeatherItem
+                    title='humidity'
+                    icon={<HumidityIcon/>}
+                    info={weather.humidity}
+                    unit='%'
+                    description={setHumidityDescription(weather.humidity).toLowerCase()}
+                />
+                <CurrentWeatherItem
+                    title='precipitation'
+                    icon={<PrecipitationIcon/>}
+                    info={weather.precipitation}
+                    unit='mm'
+                    description={`${weather.precipitationProbability}% probability`}
+                />
+                <CurrentWeatherItem
+                    title='visibility'
+                    icon={<VisibilityIcon/>}
+                    info={(weather.visibility / 1000).toFixed(2)}
+                    unit='km'
+                    description={setVisibilityDescription(weather.visibility).toLowerCase()}
+                />
                 <li className='current__item'>
                     {icon}
                     <p>
