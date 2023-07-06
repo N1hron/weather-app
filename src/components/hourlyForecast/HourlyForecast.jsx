@@ -36,7 +36,7 @@ export default function HourlyForecast() {
         })
     }
 
-    const listItems = useMemo(createListItems, [data])
+    const listItems = createListItems()
     return (
         <div className='hourly'>
             <CardHeader title='Hourly forecast'/>
