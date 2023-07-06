@@ -48,7 +48,7 @@ export const getHourlyForecast = createSelector(
     state => state.weatherInfo.data.hourly,
     (date, utcOffset, forecast) => {
         if(!(date || date === 0)) return null
-        const [start, end] = [date * 24, (date + 1) * 24 + 1]
+        const [start, end] = [date * 24, (date + 1) * 24]
         
         return {
             timestamp: forecast.time.slice(start, end),
