@@ -42,11 +42,31 @@ const weatherInfoSlice = createSlice({
 export const getStatus = state => state.weatherInfo.status
 export const getGographicalCoordinates = state => state.locations.geographicalCoordinates
 
+export const getHourlyForecast = createSelector(
+    state => state.weatherInfo.selectedDate[0],
+    state => state.weatherInfo.data.utc_offset_seconds,
+    state => state.weatherInfo.data.hourly,
+    (date, utcOffset, forecast) => {
+        if(!(date || date === 0)) return null
+        const [start, end] = [date * 24, (date + 1) * 24 + 1]
+        
+        return {
+            timestamp: forecast.time.slice(start, end),
+            utcOffset: utcOffset,
+            weatherCode: forecast.weathercode.slice(start, end),
+            temperature: forecast.temperature_2m.slice(start, end),
+            humidity: forecast.relativehumidity_2m.slice(start, end),
+            precipitation: forecast.precipitation.slice(start, end),
+            windSpeed: forecast.windspeed_10m.slice(start, end),
+        }
+    }
+)
+
 export const getCurrentWeather = createSelector(
     state => state.weatherInfo.data.current_weather.time,
     state => state.weatherInfo.data.utc_offset_seconds,
     state => state.weatherInfo.data.hourly,
-    (timestamp, utcOffset, hourlyForecast) => {
+    (timestamp, utcOffset, forecast) => {
         const {weekday, month, day, hours, minutes, utcString} = getLocalDate(timestamp, utcOffset)
         const index = Number(hours)
         return {
@@ -56,16 +76,16 @@ export const getCurrentWeather = createSelector(
             hours, 
             minutes,
             utcString,
-            weatherCode: hourlyForecast.weathercode[index],
-            temperature: hourlyForecast.temperature_2m[index].toFixed(0),
-            apparentTemperature: hourlyForecast.apparent_temperature[index].toFixed(0),
-            humidity: hourlyForecast.relativehumidity_2m[index],
-            precipitation: hourlyForecast.precipitation[index].toFixed(1),
-            precipitationProbability: hourlyForecast.precipitation_probability[index],
-            windSpeed: hourlyForecast.windspeed_10m[index].toFixed(1),
-            windDirection: hourlyForecast.winddirection_10m[index],
-            cloudCover: hourlyForecast.cloudcover[index],
-            visibility: hourlyForecast.visibility[index]
+            weatherCode: forecast.weathercode[index],
+            temperature: forecast.temperature_2m[index].toFixed(0),
+            apparentTemperature: forecast.apparent_temperature[index].toFixed(0),
+            humidity: forecast.relativehumidity_2m[index],
+            precipitation: forecast.precipitation[index].toFixed(1),
+            precipitationProbability: forecast.precipitation_probability[index],
+            windSpeed: forecast.windspeed_10m[index].toFixed(1),
+            windDirection: forecast.winddirection_10m[index],
+            cloudCover: forecast.cloudcover[index],
+            visibility: forecast.visibility[index]
         }
     }
 )
