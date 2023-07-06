@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 
 
 export default function useLocalStorage(key, defaultValue = null) {
-    const saved = localStorage.getItem(key),
-          initial = (saved === null ? defaultValue : JSON.parse(saved))
-
+    const saved = tryToParseJSON(localStorage.getItem(key), defaultValue),
+          initial = (saved === null ? defaultValue : saved)
+    
     const [value, setValue] = useState(initial)
 
     useEffect(() => {
@@ -12,6 +12,14 @@ export default function useLocalStorage(key, defaultValue = null) {
     }, [value])
 
     return [value, setValue]
+}
+
+function tryToParseJSON(json, defaultValue) {
+    try {
+        return JSON.parse(json)
+    } catch(e) {
+        return defaultValue
+    }
 }
 
 

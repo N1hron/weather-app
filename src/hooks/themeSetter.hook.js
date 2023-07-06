@@ -7,7 +7,9 @@ import { themes } from '../data'
 export default function useThemeSetter() {
     const [value, setValue] = useLocalStorage('theme', 'dark-blue')
 
-    useEffect(() => {changeColors(value)}, [value])
+    useEffect(() => {
+        if (value) changeColors(value)
+    }, [value])
 
     const changeColors = (theme) => {
         const themeData = themes[theme]
