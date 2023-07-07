@@ -54,6 +54,7 @@ const locationsSlice = createSlice({
     }
 })
 
+export const getStatus = state => state.status
 export const getCurrentLocation = state => state.locations.currentLocation
 
 const { actions, reducer } = locationsSlice

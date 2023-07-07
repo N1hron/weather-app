@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
+
 import getLocalDate from '../../utils/getLocalDate'
 import makeApiCall from '../../utils/makeApiCall'
+
 
 const initialState = {
     status: 'idle',

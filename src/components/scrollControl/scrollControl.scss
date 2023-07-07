@@ -1,0 +1,42 @@
+.scroll-control {
+    display: flex;
+    gap: 15px;
+
+    button {
+        background-color: var(--additional-color);
+        border: none;
+        border-radius: 15px;
+        width: 50px;
+        height: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        svg {
+            path {
+                stroke: var(--secondary-color);
+            }
+        }
+
+        &:nth-child(1) {
+            svg {
+                rotate: -90deg;
+            }
+        }
+
+        &:nth-child(2) {
+            svg {
+                rotate: 90deg;
+            }
+        }
+
+        &:hover {
+            background-color: var(--additional-color-hover);
+        }
+
+        &:active {
+            background-color: var(--additional-color-active);
+        }
+    }
+}

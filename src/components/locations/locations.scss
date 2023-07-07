@@ -1,6 +1,8 @@
 .locations {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 15px;
     height: 53px;
     background-color: var(--secondary-color);
     padding: 0 10px;

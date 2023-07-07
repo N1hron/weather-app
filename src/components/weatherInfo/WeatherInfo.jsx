@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchForecast, getStatus, getGographicalCoordinates, clearDate } from './weatherInfoSlice'
+import useStatus from '../../hooks/status.hook'
 
 import DaysList from '../daysList/DaysList'
 import CurrentWeather from '../currentWeather/CurrentWeather'
@@ -18,7 +19,7 @@ import './weatherInfo.scss'
 export default function WeatherInfo() {
     const dispatch = useDispatch()
     const {lat, lon} = useSelector(getGographicalCoordinates)
-    const status = useSelector(getStatus)
+    const Message = useStatus(getStatus, {idle: 'Please enter your location'})
     
     useEffect(getForecast, [lat, lon])
 
@@ -29,8 +30,8 @@ export default function WeatherInfo() {
         }
     }
     
-    if(status !== 'success') return
-    return (
+    if (Message) return Message
+    return(
         <div className='weather'>
             <DaysList/>
             <CurrentWeather/>

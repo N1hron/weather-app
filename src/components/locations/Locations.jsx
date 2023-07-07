@@ -1,12 +1,16 @@
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { selectAllLocations, setCurrentLocation } from './locationsSlice'
+
+import ScrollControl from '../scrollControl/ScrollControl'
 
 import './locations.scss'
 
 
 export default function LocationsList({inputValue, setInputValue}) {
     const dispatch = useDispatch()
+    const listRef = useRef(null)
     const locations = useSelector(selectAllLocations)
 
     function onCurrentLocationChange(data) {
@@ -42,9 +46,10 @@ export default function LocationsList({inputValue, setInputValue}) {
     if(!inputValue) return
     return (
         <div className='locations'>
-            <ul className='locations__content'>
+            <ul ref={listRef} className='locations__content'>
                 {listItems.length ? listItems : <p className='locations__message'>No matches</p>}
             </ul>
+            <ScrollControl ref={listRef} step={200}/>
         </div>
     )
 }

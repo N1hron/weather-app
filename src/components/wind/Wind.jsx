@@ -3,19 +3,20 @@ import { useSelector } from 'react-redux'
 import { getWind } from '../weatherInfo/weatherInfoSlice'
 import hasNullOrUndefined from '../../utils/hasNullUndefinedOrNan'
 
+import CardHeader from '../cardHeader/CardHeader'
 import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg'
 
 import './wind.scss'
 
 
-export default function MoonPhase() {
-    const windData = useSelector(getWind)
+export default function Wind() {
+    const data = useSelector(getWind)
     
-    if(hasNullOrUndefined(windData)) return <div className='wind'></div>
-    const [windSpeed, windDirection, units] = windData
+    if(hasNullOrUndefined(data)) return <div className='wind'></div>
+    const [windSpeed, windDirection, units] = data
     return (
         <div className='wind'>
-            <h3>Wind</h3>
+            <CardHeader title={'Wind'} subtitle={'dominant'}/>
             <div className='wind__speed'>
                 {windSpeed.toFixed(1)} <p><span>{units}</span><span>day max</span></p>
             </div>

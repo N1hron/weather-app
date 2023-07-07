@@ -64,3 +64,10 @@ svg {
         stroke: var(--icon-color);
     }
 }
+
+input {
+    &::placeholder {
+        opacity: 1;
+        color: var(--font-main-color)
+    }
+}
