@@ -1,4 +1,5 @@
 .weather {
+    position: relative;
     margin: 0 auto;
     height: 100%;
     max-width: 1860px;
@@ -7,6 +8,7 @@
     grid-template-rows: 170px 170px minmax(360px, auto);
     gap: 20px;
     justify-content: center;
+    z-index: 1;
 
     &_active {
         transform: scale(100%);

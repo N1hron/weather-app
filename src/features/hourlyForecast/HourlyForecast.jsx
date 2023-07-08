@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { getHourlyForecast } from '../weatherInfo/weatherInfoSlice';
+import { getHourlyForecast } from '../weather/weatherSlice';
 
 import hasNullUndefinedOrNan from '../../utils/hasNullUndefinedOrNan';
 import getLocalDate from '../../utils/getLocalDate';
 import getWeatherByWMO from '../../utils/getWeatherByWMO';
 
-import CardHeader from '../cardHeader/CardHeader'
+import CardHeader from '../../components/cardHeader/CardHeader'
 import HourlyForecastItem from './HourlyForecastItem'
-import ScrollControl from '../scrollControl/ScrollControl'
+import ScrollControl from '../../components/scrollControl/ScrollControl'
 
 import './hourlyForecast.scss'
 

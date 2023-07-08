@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-import { getSunset } from '../weatherInfo/weatherInfoSlice'
+import { getSunset } from '../weather/weatherSlice'
 
 import { ReactComponent as SunsetIcon } from '../../assets/icons/sunset.svg'
 import Twilight from './Twilight'

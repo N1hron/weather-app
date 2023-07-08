@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux'
 
 import { fetchLocations } from '../locations/locationsSlice'
 
-import ThemeSwitcher from '../themeSwitcher/ThemeSwitcher'
+import ThemeSwitcher from '../../features/themeSwitcher/ThemeSwitcher'
 import Locations from '../locations/Locations'
 import CurrentLocation from '../currentLocation/CurrentLocation'
+import LocationsMessage from '../../components/message/LocationsMessage'
 
 import './header.scss'
 
@@ -29,6 +30,7 @@ export default function Header() {
             <div className='header__top'>
                 <div className='header__logo'>Weather App</div>
                 <input className='header__input' name='location' type='text' placeholder='Enter your location' value={inputValue} onChange={onInputChange}/>
+                <LocationsMessage/>
                 <ThemeSwitcher ref={bottomRef}/>
             </div>
             <div ref={bottomRef} className='header__bottom'>

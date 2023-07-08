@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux'
 
-import { getUVIndex } from '../weatherInfo/weatherInfoSlice'
+import { getUVIndex } from '../weather/weatherSlice'
 import hasNullOrUndefined from '../../utils/hasNullUndefinedOrNan'
 
-import CardHeader from '../cardHeader/CardHeader'
+import CardHeader from '../../components/cardHeader/CardHeader'
 
 import './uvIndex.scss'
 

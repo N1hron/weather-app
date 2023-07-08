@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux'
 
-import { getCurrentWeather } from '../weatherInfo/weatherInfoSlice'
+import { getCurrentWeather } from '../weather/weatherSlice'
 import getWeatherByWMO from '../../utils/getWeatherByWMO'
 import hasNullUndefinedOrNan from '../../utils/hasNullUndefinedOrNan'
 import setHumidityDescription from '../../utils/setHumidityDescription'
 import setWindDescription from '../../utils/setWindDescription'
 import setVisibilityDescription from '../../utils/setVisibilityDescription'
 
-import CardHeader from '../cardHeader/CardHeader'
+import CardHeader from '../../components/cardHeader/CardHeader'
 import CurrentWeatherItem from './CurrentWeatherItem'
 import { ReactComponent as TemperatureIcon } from '../../assets/icons/thermometer.svg'
 import { ReactComponent as WindIcon } from '../../assets/icons/wind.svg'

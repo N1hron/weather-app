@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import locationsReducer from '../components/locations/locationsSlice'
-import weatherInfoReducer from '../components/weatherInfo/weatherInfoSlice'
+import locationsReducer from '../features/locations/locationsSlice'
+import weatherReducer from '../features/weather/weatherSlice'
 
 
 const store = configureStore({
     reducer: {
         locations: locationsReducer,
-        weatherInfo: weatherInfoReducer
+        weather: weatherReducer
     },
     devTools: import.meta.env.DEV
 })

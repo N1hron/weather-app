@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux'
 
-import { getPrecipitation } from '../weatherInfo/weatherInfoSlice'
+import { getPrecipitation } from '../weather/weatherSlice'
 import hasNullUndefinedOrNan from '../../utils/hasNullUndefinedOrNan'
 
-import CardHeader from '../cardHeader/CardHeader'
+import CardHeader from '../../components/cardHeader/CardHeader'
 
 import './precipitation.scss'
 

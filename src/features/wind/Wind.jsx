@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux'
 
-import { getWind } from '../weatherInfo/weatherInfoSlice'
+import { getWind } from '../weather/weatherSlice'
 import hasNullOrUndefined from '../../utils/hasNullUndefinedOrNan'
 
-import CardHeader from '../cardHeader/CardHeader'
+import CardHeader from '../../components/cardHeader/CardHeader'
 import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg'
 
 import './wind.scss'

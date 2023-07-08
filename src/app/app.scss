@@ -1,4 +1,4 @@
-@import '../../scss/line';
+@import '../scss/line';
 
 :root {
     --main-color: #1d232f;
@@ -34,7 +34,9 @@ body {
 }
 
 main {
+    position: relative;
     height: 100%;
+    flex-grow: 1;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { selectAllLocations, setCurrentLocation } from './locationsSlice'
 
-import ScrollControl from '../scrollControl/ScrollControl'
+import ScrollControl from '../../components/scrollControl/ScrollControl'
 
 import './locations.scss'
 

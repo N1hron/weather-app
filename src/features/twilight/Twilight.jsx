@@ -2,7 +2,7 @@ import hasNullUndefinedOrNan from '../../utils/hasNullUndefinedOrNan'
 
 import './twilight.scss'
 
-import CardHeader from '../cardHeader/CardHeader'
+import CardHeader from '../../components/cardHeader/CardHeader'
 
 export default function Twilight({data, type}) {
     const {hours, minutes, utcString, icon} = data
