@@ -1,14 +1,13 @@
-import { getStatus } from '../../features/weather/weatherSlice'
+import { useSelector } from 'react-redux'
+
+import { getStatus, getMessage } from '../../features/weather/weatherSlice'
 
 import StatusMessage from './StatusMessage'
 
 
 export default function WeatherMessage() {
-    const data = {
-        loading: 'Loading weather...',
-        failure: 'An error occurred while receiving weather',
-        success: 'Weather received successfully'
-    }
+    const status = useSelector(getStatus),
+          message = useSelector(getMessage)
     
-    return <StatusMessage selector={getStatus} {...data}/>
+    return <StatusMessage status={status} message={message}/>
 }

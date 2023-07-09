@@ -1,9 +1,11 @@
 import { createSlice, createEntityAdapter, createAsyncThunk } from '@reduxjs/toolkit'
 
+
 const locationsAdapter = createEntityAdapter()
 
 const initialState = locationsAdapter.getInitialState({
     status: 'idle',
+    message: null,
     currentLocation: {},
     geographicalCoordinates: {}
 });
@@ -28,12 +30,6 @@ export const fetchGeographicalCoordinates = createAsyncThunk(
     }
 )
 
-const setLoading = state => {state.status = 'loading'}
-const setFailure = state => {
-    state.status = 'failure',
-    state.geographicalCoordinates = {}
-}
-
 const locationsSlice = createSlice({
     name: 'locations',
     initialState,
@@ -42,21 +38,36 @@ const locationsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder 
-            .addCase(fetchLocations.pending, setLoading)
+            .addCase(fetchLocations.pending, (state) => {
+                state.status = 'loading'
+                state.message = 'Receiving locations...'
+            })
             .addCase(fetchLocations.fulfilled, (state, action) => {
                 locationsAdapter.setAll(state, action.payload)
                 state.status = 'idle'
+                state.message = 'Please select location'
             })
-            .addCase(fetchLocations.rejected, setFailure)
-            .addCase(fetchGeographicalCoordinates.pending, setLoading)
+            .addCase(fetchLocations.rejected, (state) => {
+                state.status = 'error'
+                state.message = 'An error occurred while receiving locations'
+            })
+            .addCase(fetchGeographicalCoordinates.pending, (state) => {
+                state.status = 'loading'
+                state.message = 'Receiving coorginates...'
+            })
             .addCase(fetchGeographicalCoordinates.fulfilled, (state, action) => {
                 state.geographicalCoordinates = action.payload
                 state.status = 'success'
+                state.message = 'Coordinates received successfully'
             })
-            .addCase(fetchGeographicalCoordinates.rejected, setFailure)
+            .addCase(fetchGeographicalCoordinates.rejected, (state) => {
+                state.status = 'error'
+                state.message = 'An error occurred while receiving coorginates'
+            })
     }
 })
 
+export const getMessage = state => state.locations.message
 export const getStatus = state => state.locations.status
 export const getCurrentLocation = state => state.locations.currentLocation
 

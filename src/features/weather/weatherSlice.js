@@ -7,6 +7,7 @@ import makeApiCall from '../../utils/makeApiCall'
 
 const initialState = {
     status: 'idle',
+    message: null,
     selectedDate: [],
     data: {}
 }
@@ -31,20 +32,28 @@ const weatherSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchForecast.pending, (state) => {state.status = 'loading'})
+            .addCase(fetchForecast.pending, (state) => {
+                state.status = 'loading'
+                state.message = 'Loading weather...'
+            })
             .addCase(fetchForecast.fulfilled, (state, action) => {
                 state.data = action.payload
                 state.status = 'success'
+                state.message = 'Weather received successfully'
                 
             })
-            .addCase(fetchForecast.rejected, (state, action) => {
-                state.status = 'failure'
-                state.message = action.error.message
+            .addCase(fetchForecast.rejected, (state) => {
+                state.status = 'error'
+                state.message = 'An error occurred while receiving weather'
             })
-            .addCase(fetchGeographicalCoordinates.rejected, (state) => {state.status = 'idle'})
+            .addCase(fetchGeographicalCoordinates.rejected, (state) => {
+                state.status = 'idle'
+                state.message = null
+            })
     }
 })
 
+export const getMessage = state => state.weather.message
 export const getStatus = state => state.weather.status
 export const getGographicalCoordinates = state => state.locations.geographicalCoordinates
 

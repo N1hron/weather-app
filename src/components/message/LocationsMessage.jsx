@@ -1,15 +1,13 @@
-import { getStatus } from '../../features/locations/locationsSlice'
+import { useSelector } from 'react-redux'
+
+import { getStatus, getMessage } from '../../features/locations/locationsSlice'
 
 import StatusMessage from './StatusMessage'
 
 
 export default function LocationsMessage() {
-    const data = {
-        idle: 'Please select location',
-        loading: 'Receiving coorginates...',
-        failure: 'An error occurred while receiving coorginates',
-        success: 'Coordinates received successfully'
-    }
+    const status = useSelector(getStatus),
+          message = useSelector(getMessage)
     
-    return <StatusMessage selector={getStatus} {...data} showIdle minified/>
+    return <StatusMessage status={status} message={message} showIdle minified/>
 }
