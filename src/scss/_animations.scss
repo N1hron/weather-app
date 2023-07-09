@@ -12,14 +12,14 @@
     }
 }
 
-// @keyframes message-animation {
-//     0% {
-//         // opacity: 1;
-        
-//     }
+@keyframes idle-animation {
+    100% {
+        opacity: 0.4;
+    }
+}
 
-//     100% {
-//         // opacity: 0.8;
-//         translate: 0 10px;
-//     }
-// }
+.idle {
+    // animation: 'idle-animation' 2s infinite alternate ease-in-out;
+    // backface-visibility: hidden;
+    // opacity: 1;
+}

@@ -5,14 +5,30 @@
     grid-template-columns: 100%;
     width: 100%;
     gap: 15px;
-    border-radius: 30px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 15px;
+    // border-radius: 30px;
+    // border-bottom-left-radius: 15px;
+    // border-bottom-right-radius: 15px;
 
     &__bottom {
         display: flex;
         justify-content: flex-end;
         gap: 15px;
+
+        .message {
+            position: relative;
+            transform: none;
+            top: auto;
+            left: auto;
+            flex-shrink: 0;
+            opacity: 0.8;
+            font-size: 20px;
+            text-transform: lowercase;
+            
+            svg {
+                width: 33px;
+            }
+        }
     }
 
     &__top {

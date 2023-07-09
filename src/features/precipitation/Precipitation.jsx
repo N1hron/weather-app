@@ -11,7 +11,7 @@ import './precipitation.scss'
 export default function Precipitation() {
     const precipitationData = useSelector(getPrecipitation)
     
-    if(hasNullUndefinedOrNan(precipitationData)) return <div className='precipitation'></div>
+    if(hasNullUndefinedOrNan(precipitationData)) return <div className='precipitation idle'></div>
     const [hours, sum, probability] = precipitationData
     return (
         <div className='precipitation'>

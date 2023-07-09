@@ -8,7 +8,7 @@ import { ReactComponent as SuccessIcon } from '../../assets/icons/success.svg'
 import './message.scss'
 
 
-export default function Message({children, type, minified = false}) {
+export default function Message({children, type}) {
     function setIcon() {
         switch(type) {
             case 'loading':
@@ -24,7 +24,7 @@ export default function Message({children, type, minified = false}) {
 
     const icon = setIcon()
     return (
-        <div className={minified ? 'message message_minified' : 'message'}>
+        <div className='message'>
             {icon}
             {children}
         </div>

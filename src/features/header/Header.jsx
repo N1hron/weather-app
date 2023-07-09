@@ -30,12 +30,12 @@ export default function Header() {
             <div className='header__top'>
                 <div className='header__logo'>Weather App</div>
                 <input className='header__input' name='location' type='text' placeholder='Enter your location' value={inputValue} onChange={onInputChange}/>
-                <LocationsMessage/>
                 <ThemeSwitcher ref={bottomRef}/>
             </div>
             <div ref={bottomRef} className='header__bottom'>
                 <Locations inputValue={deferredInputValue} setInputValue={setInputValue}/>
                 <CurrentLocation inputValue={deferredInputValue}/>
+                <LocationsMessage/>
             </div>
             <div className='line-wrapper'><div className='line'></div></div>
         </header>

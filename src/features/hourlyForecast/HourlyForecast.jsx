@@ -17,7 +17,7 @@ export default function HourlyForecast() {
     const data = useSelector(getHourlyForecast)
     const listRef = useRef(null)
 
-    if(hasNullUndefinedOrNan(data)) return <div className='hourly'></div>
+    if(hasNullUndefinedOrNan(data)) return <div className='hourly idle'></div>
 
     const {timestamp, utcOffset, weatherCode, temperature, humidity, precipitation, windSpeed} = data;
           

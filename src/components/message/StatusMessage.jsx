@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
 
 import Message from './Message'
 
 
-export default function StatusMessage({status, message, showIdle = false, minified = false}) {
+export default function StatusMessage({status, message}) {
     const [isVisible, setIsVisible] = useState(true)
     const timerId = useRef(null)
     
@@ -20,5 +19,5 @@ export default function StatusMessage({status, message, showIdle = false, minifi
         }
     }, [status])
 
-    return message && isVisible && <Message minified={minified} type={status}>{message}</Message>
+    return message && isVisible && <Message type={status}>{message}</Message>
 }

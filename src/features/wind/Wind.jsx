@@ -12,7 +12,7 @@ import './wind.scss'
 export default function Wind() {
     const data = useSelector(getWind)
     
-    if(hasNullOrUndefined(data)) return <div className='wind'></div>
+    if(hasNullOrUndefined(data)) return <div className='wind idle'></div>
     const [windSpeed, windDirection, units] = data
     return (
         <div className='wind'>

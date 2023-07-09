@@ -61,6 +61,7 @@ const locationsSlice = createSlice({
                 state.message = 'Coordinates received successfully'
             })
             .addCase(fetchGeographicalCoordinates.rejected, (state) => {
+                state.geographicalCoordinates = {}
                 state.status = 'error'
                 state.message = 'An error occurred while receiving coorginates'
             })

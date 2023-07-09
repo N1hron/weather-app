@@ -29,7 +29,7 @@ export default function UVIndex() {
         }
     }
 
-    if(hasNullOrUndefined(uvIndex)) return <div className='uv-index'></div>
+    if(hasNullOrUndefined(uvIndex)) return <div className='uv-index idle'></div>
 
     const description = setDescription(uvIndex),
           positionStyles = getPointerPositionStyle(uvIndex)
