@@ -1,5 +1,6 @@
 import { useMemo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { motion } from 'framer-motion'
 
 import { selectAllLocations, setCurrentLocation } from './locationsSlice'
 
@@ -45,11 +46,17 @@ export default function LocationsList({inputValue, setInputValue}) {
     
     if(!inputValue) return
     return (
-        <div className='locations'>
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.5 }} 
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            transition={{duration: 0.1}}
+            className='locations'>
+
             <ul ref={listRef} className='locations__content'>
                 {listItems.length ? listItems : <p className='locations__message'>No matches</p>}
             </ul>
             <ScrollControl ref={listRef} step={200}/>
-        </div>
+        </motion.div>
     )
 }

@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux'
 
 import { fetchLocations } from '../locations/locationsSlice'
 
-import ThemeSwitcher from '../../features/themeSwitcher/ThemeSwitcher'
+import ThemeSwitcher from '../../components/themeSwitcher/ThemeSwitcher'
 import Locations from '../locations/Locations'
-import CurrentLocation from '../currentLocation/CurrentLocation'
-import LocationsMessage from '../../components/message/LocationsMessage'
+import CurrentLocation from '../locations/currentLocation/CurrentLocation'
+import LocationsMessage from '../locations/LocationsMessage'
 
 import './header.scss'
 
@@ -33,8 +33,8 @@ export default function Header() {
                 <ThemeSwitcher ref={bottomRef}/>
             </div>
             <div ref={bottomRef} className='header__bottom'>
-                <Locations inputValue={deferredInputValue} setInputValue={setInputValue}/>
                 <CurrentLocation inputValue={deferredInputValue}/>
+                <Locations inputValue={deferredInputValue} setInputValue={setInputValue}/>
                 <LocationsMessage/>
             </div>
             <div className='line-wrapper'><div className='line'></div></div>

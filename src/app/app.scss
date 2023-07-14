@@ -1,5 +1,5 @@
 @import '../scss/line';
-@import '../scss/animations';
+@import '../scss/icons';
 
 :root {
     --main-color: #1d232f;
@@ -51,21 +51,27 @@ p {
     font-weight: 400;
 }
 
+.secondary-text {
+    opacity: 0.8;
+    font-size: 20px;
+    text-transform: lowercase;
+    font-weight: 400;
+
+    &_big {
+        font-size: 30px;
+    }
+}
+
+// svg {
+//     path {
+//         stroke: var(--icon-color);
+//     }
+// }
+
 ul {
     margin: 0;
     padding: 0;
     list-style: none;
-}
-
-span {
-    opacity: 0.8;
-    font-size: 20px;
-}
-
-svg {
-    path {
-        stroke: var(--icon-color);
-    }
 }
 
 input {

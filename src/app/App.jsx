@@ -1,6 +1,5 @@
 import Header from '../features/header/Header'
 import Weather from '../features/weather/Weather'
-import LocationsMessage from '../components/message/LocationsMessage'
 
 import './app.scss'
 

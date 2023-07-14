@@ -17,6 +17,29 @@
     }
 }
 
+.weather-card {
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    padding: 15px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+        }
+    }
+
+    &__content {
+        height: 100%;
+        border-radius: inherit;
+    }
+}
+
 @media(max-width: 1919px) {
     .weather {
         max-width: 1120px;

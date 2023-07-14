@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { AnimatePresence } from 'framer-motion'
 
 import Message from './Message'
 
@@ -19,5 +20,9 @@ export default function StatusMessage({status, message}) {
         }
     }, [status])
 
-    return message && isVisible && <Message type={status}>{message}</Message>
+    return (
+        <AnimatePresence>
+            {message && isVisible && <Message type={status}>{message}</Message>}
+        </AnimatePresence>
+    )
 }

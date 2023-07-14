@@ -11,115 +11,143 @@ import { ReactComponent as ThunderstormIcon } from '../assets/icons/thunderstorm
 export const wmoCodes = {
     '0': {
         description: 'Clear Sky',
-        icon: <SunIcon/>
+        icon: <SunIcon className='icon'/>,
+        coloredIcon: <SunIcon className='icon icon_sun-colored'/>
     },
     '1': {
         description: 'Mainly Clear',
-        icon: <SunIcon/>
+        icon: <SunIcon className='icon'/>,
+        coloredIcon: <SunIcon className='icon icon_sun-colored'/>
     },
     '2': {
         description: 'Partly Cloudy',
-        icon: <SunnyIcon/>
+        icon: <SunnyIcon className='icon'/>,
+        coloredIcon: <SunnyIcon className='icon icon_sunny-colored'/>
     },
     '3': {
         description: 'Cloudy',
-        icon: <CloudyIcon/>
+        icon: <CloudyIcon className='icon'/>,
+        coloredIcon: <CloudyIcon className='icon icon_cloudy-colored'/>
     },
     '45': {
         description: 'Fog',
-        icon: <FogIcon/>
+        icon: <FogIcon className='icon'/>,
+        coloredIcon: <FogIcon className='icon icon_fog-colored'/>
     },
     '48': {
         description: 'Rime Fog',
-        icon: <FogIcon/>
+        icon: <FogIcon className='icon'/>,
+        coloredIcon: <FogIcon className='icon icon_fog-colored'/>
     },
     '51': {
         description: 'Light Drizzle',
-        icon: <LightRainIcon/>
+        icon: <LightRainIcon className='icon'/>,
+        coloredIcon: <LightRainIcon className='icon icon_light-rain-colored'/>
     },
     '53': {
         description: 'Moderate Drizzle',
-        icon: <LightRainIcon/>
+        icon: <LightRainIcon className='icon'/>,
+        coloredIcon: <LightRainIcon className='icon icon_light-rain-colored'/>
     },
     '55': {
         description: 'Heavy Drizzle',
-        icon: <LightRainIcon/>
+        icon: <LightRainIcon className='icon'/>,
+        coloredIcon: <LightRainIcon className='icon icon_light-rain-colored'/>
     },
     '56': {
         description: 'Light Freezing Drizzle',
-        icon: <LightRainIcon/>
+        icon: <LightRainIcon className='icon'/>,
+        coloredIcon: <LightRainIcon className='icon icon_light-rain-colored'/>
     },
     '57': {
         description: 'Freezing Drizzle',
-        icon: <LightRainIcon/>
+        icon: <LightRainIcon className='icon'/>,
+        coloredIcon: <LightRainIcon className='icon icon_light-rain-colored'/>
     },
     '61': {
         description: 'Light Rain',
-        icon: <LightRainIcon/>
+        icon: <LightRainIcon className='icon'/>,
+        coloredIcon: <LightRainIcon className='icon icon_light-rain-colored'/>
     },
     '63': {
         description: 'Moderate Rain',
-        icon: <HeavyRainIcon/>
+        icon: <HeavyRainIcon className='icon'/>,
+        coloredIcon: <HeavyRainIcon className='icon icon_heavy-rain-colored'/>
     },
     '65': {
         description: 'Heavy Rain',
-        icon: <HeavyRainIcon/>
+        icon: <HeavyRainIcon className='icon'/>,
+        coloredIcon: <HeavyRainIcon className='icon icon_heavy-rain-colored'/>
     },
     '66': {
         description: 'Light Freezing Rain',
-        icon: <LightRainIcon/>
+        icon: <LightRainIcon className='icon'/>,
+        coloredIcon: <LightRainIcon className='icon icon_light-rain-colored'/>
     },
     '67': {
         description: 'Heavy Freezing Rain',
-        icon: <HeavyRainIcon/>
+        icon: <HeavyRainIcon className='icon'/>,
+        coloredIcon: <HeavyRainIcon className='icon icon_heavy-rain-colored'/>
     },
     '71': {
         description: 'Light Snow',
-        icon: <SnowIcon/>
+        icon: <SnowIcon className='icon'/>,
+        coloredIcon: <SnowIcon className='icon icon_snow-colored'/>
     },
     '73': {
         description: 'Moderate Snow',
-        icon: <SnowIcon/>
+        icon: <SnowIcon className='icon'/>,
+        coloredIcon: <SnowIcon className='icon icon_snow-colored'/>
     },
     '75': {
         description: 'Heavy Snow',
-        icon: <SnowIcon/>
+        icon: <SnowIcon className='icon'/>,
+        coloredIcon: <SnowIcon className='icon icon_snow-colored'/>
     },
     '77': {
         description: 'Snow Grains',
-        icon: <SnowIcon/>
+        icon: <SnowIcon className='icon'/>,
+        coloredIcon: <SnowIcon className='icon icon_snow-colored'/>
     },
     '80': {
         description: 'Slight Rain Showers',
-        icon: <HeavyRainIcon/>
+        icon: <HeavyRainIcon className='icon'/>,
+        coloredIcon: <HeavyRainIcon className='icon icon_heavy-rain-colored'/>
     },
     '81': {
         description: 'Moderate Rain Showers',
-        icon: <HeavyRainIcon/>
+        icon: <HeavyRainIcon className='icon'/>,
+        coloredIcon: <HeavyRainIcon className='icon icon_heavy-rain-colored'/>
     },
     '82': {
         description: 'Heavy Rain Showers',
-        icon: <HeavyRainIcon/>
+        icon: <HeavyRainIcon className='icon'/>,
+        coloredIcon: <HeavyRainIcon className='icon icon_heavy-rain-colored'/>
     },
     '85': {
         description: 'Slight Snow Showers',
-        icon: <SnowIcon/>
+        icon: <SnowIcon className='icon'/>,
+        coloredIcon: <SnowIcon className='icon icon_snow-colored'/>
     },
     '86': {
         description: 'Heavy Snow Showers',
-        icon: <SnowIcon/>
+        icon: <SnowIcon className='icon'/>,
+        coloredIcon: <SnowIcon className='icon icon_snow-colored'/>
     },
     '95': {
         description: 'Thunderstorm',
-        icon: <ThunderstormIcon/>
+        icon: <ThunderstormIcon className='icon'/>,
+        coloredIcon: <ThunderstormIcon className='icon icon_thunder-colored'/>
     },
     '96': {
         description: 'Thunderstorm With Slight Hail',
-        icon: <ThunderstormIcon/>
+        icon: <ThunderstormIcon className='icon'/>,
+        coloredIcon: <ThunderstormIcon className='icon icon_thunder-colored'/>
     },
     '99': {
         description: 'Thunderstorm With Heavy Hail',
-        icon: <ThunderstormIcon/>
+        icon: <ThunderstormIcon className='icon'/>,
+        coloredIcon: <ThunderstormIcon className='icon icon_thunder-colored'/>
     }
 }
 

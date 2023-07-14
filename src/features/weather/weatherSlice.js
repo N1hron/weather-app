@@ -105,7 +105,7 @@ export const getCurrentWeather = createSelector(
     }
 )
 
-export const getDaysInfo = createSelector(
+export const getDays = createSelector(
     state => state.weather.data.daily.time,
     state => state.weather.data.utc_offset_seconds,
     state => state.weather.data.daily.weathercode,

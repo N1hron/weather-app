@@ -1,0 +1,118 @@
+.icon {
+    path {
+        stroke: var(--icon-color);
+    }
+
+    &_sunrise {
+        path {
+            stroke: #ff8329;
+        }
+
+        path {
+            &:nth-last-child(1) {
+                stroke: var(--icon-color);
+            }
+        }
+    }
+
+    &_sunset {
+        path {
+            stroke: var(--icon-color);
+        }
+
+        circle {
+            stroke: #ff8329;
+        }
+    }
+
+    &_info {
+        path {
+            &:nth-child(2) {
+                fill: var(--icon-color);
+            }
+        }
+    }
+
+    &_spinner {
+        path {
+            fill: var(--icon-color);
+        }
+    }
+
+    &_sun-colored {
+        path {
+            stroke: #ff8329;
+            fill: #ff8329;
+
+            &:nth-child(1) {
+                fill: transparent;
+            }
+        }
+    }
+
+    &_sunny-colored {
+        path {
+            stroke:#ff8329;
+            fill: #ff8329;
+
+            &:nth-child(1) {
+                fill: transparent;
+            }
+
+            &:nth-child(6) {
+                stroke:var(--icon-color);
+                fill: transparent;
+            }
+
+            &:nth-child(7) {
+                stroke:var(--icon-color);
+                fill: transparent;
+            }
+        }
+    }
+
+    &_cloudy-colored {
+        path {
+            &:nth-child(2) {
+                stroke: #ff8329;
+            }
+        }
+    }
+
+    &_light-rain-colored, 
+    &_heavy-rain-colored {
+        path {
+            stroke: rgb(78, 137, 255);
+
+            &:nth-child(1) {
+                stroke: var(--icon-color);
+            }
+        }
+    }
+
+    &_fog-colored {
+        path {
+            &:nth-child(2) {
+                stroke: #ff8329;
+            }
+        }
+    }
+
+    &_thunder-colored {
+        path {
+            &:nth-child(1) {
+                stroke: #FDD023;
+            }
+        }
+    }
+
+    &_snow-colored {
+        path {
+            stroke: #fffafa;
+
+            &:nth-child(1) {
+                stroke: var(--icon-color);
+            }
+        }
+    }
+}

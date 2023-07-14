@@ -1,0 +1,40 @@
+.twilight {
+    grid-row: 2/3;
+    grid-column: 3/4;
+
+    .weather-card__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    svg {
+        width: 70px;
+        height: 70px;
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: 700;
+
+        span {
+            text-transform: none;
+        }
+    }
+
+    &_sunset {
+        grid-column: 4/5;
+    }
+}
+
+@media(max-width: 1919px) {
+    .twilight {
+        grid-row: 3/4;
+        grid-column: 2/3;
+        
+        &_sunset {
+            grid-column: 3/4;
+        }
+    }
+}

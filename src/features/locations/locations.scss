@@ -9,6 +9,7 @@
     border-radius: 15px;
     overflow: hidden;
     flex-grow: 1;
+    transform-origin: top;
      
     &__content {
         display: flex;
@@ -26,6 +27,8 @@
         left: 0;
         text-align: center;
         font-size: 30px;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     &__item {
