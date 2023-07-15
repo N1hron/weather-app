@@ -34,13 +34,13 @@ export default function Weather() {
     return(
         <div className='weather'>
             <Days/>
-            <CurrentWeather animationDelay={0}/>
-            <UVIndex animationDelay={0.05}/>
-            <Sunrise animationDelay={0.1}/>
-            <Wind animationDelay={0.15}/>
-            <Sunset animationDelay={0.15}/>
-            <Precipitation animationDelay={0.2}/>
-            <HourlyForecast animationDelay={0.25}/>
+            <CurrentWeather/>
+            <UVIndex/>
+            <Sunrise/>
+            <Wind/>
+            <Sunset/>
+            <Precipitation/>
+            <HourlyForecast/>
         </div>
     )
 }

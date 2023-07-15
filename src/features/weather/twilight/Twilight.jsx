@@ -1,4 +1,4 @@
-import hasNullUndefinedOrNan from '../../../utils/hasNullUndefinedOrNan'
+import { hasNullUndefinedOrNan } from '../../../utils'
 
 import './twilight.scss'
 
@@ -7,22 +7,21 @@ import WeatherCard from '../WeatherCard'
 export default function Twilight({data, type, animationDelay}) {
     const {hours, minutes, utcString, icon} = data
 
-    if(hasNullUndefinedOrNan(data)) return (
-        <WeatherCard 
+    return (
+        <WeatherCard
             initial={{ opacity: 0, scale: 0.8 }} 
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.1, delay: animationDelay }}
-            className={`twilight twilight_${type.toLowerCase()} idle`}>
-        </WeatherCard>
-    )
-    return (
-        <WeatherCard 
-            animationDelay={animationDelay}
             className={`twilight twilight_${type.toLowerCase()}`} 
             title={type}>
 
-            {icon}
-            <p>{`${hours}:${minutes}`} <span className='secondary-text'>UTC{utcString}</span></p>
+            {
+                !hasNullUndefinedOrNan(data) &&
+                <>
+                    {icon}
+                    <p>{`${hours}:${minutes}`} <span className='secondary-text'>UTC{utcString}</span></p>
+                </>
+            }
         </WeatherCard>
     )
 }

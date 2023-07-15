@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion'
-
 import { ReactComponent as ErrorIcon } from '../../assets/icons/error.svg'
 import { ReactComponent as InfoIcon } from '../../assets/icons/info.svg'
 import { ReactComponent as SuccessIcon } from '../../assets/icons/success.svg'
@@ -24,14 +22,9 @@ export default function Message({children, type}) {
 
     const icon = setIcon()
     return (
-        <motion.div 
-            initial={{ opacity: 0, scale: 0.5 }} 
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            className='message'>
-
+        <div className='message'>
             {icon}
             {children}
-        </motion.div>
+        </div>
     )
 }

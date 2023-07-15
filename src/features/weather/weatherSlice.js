@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 
 import { fetchGeographicalCoordinates } from '../locations/locationsSlice'
-import getLocalDate from '../../utils/getLocalDate'
-import makeApiCall from '../../utils/makeApiCall'
+import { getLocalDate, makeApiCall } from '../../utils'
 
 
 const initialState = {

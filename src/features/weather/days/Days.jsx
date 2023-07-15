@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { motion } from 'framer-motion'
 
 import { setDate, getDays } from '../weatherSlice'
-import getWeatherByWMO from '../../../utils/getWeatherByWMO'
-import getLocalDate from '../../../utils/getLocalDate'
+import { getWeatherByWMO, getLocalDate } from '../../../utils'
 
 import './days.scss'
 

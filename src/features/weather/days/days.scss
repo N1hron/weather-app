@@ -16,6 +16,7 @@
             border-radius: 15px;
             padding: 15px;
             box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.1s;
             cursor: pointer;
 
             svg {
@@ -35,7 +36,7 @@
                 box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
                 
                 .days-list__content {
-                    scale: 96%;
+                    scale: 98.5%;
                 }
 
                 .days-list__shadow {
@@ -53,6 +54,7 @@
         top: 0;
         border-radius: inherit;
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.1s;
     }
 
     &__content {
