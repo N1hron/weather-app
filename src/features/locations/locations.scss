@@ -21,16 +21,6 @@
         transition: all 0.05s;
     }
 
-    &__message {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        text-align: center;
-        font-size: 30px;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
     &__item {
         padding: 5px 10px;
         border-radius: 5px;

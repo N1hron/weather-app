@@ -52,6 +52,7 @@ const weatherSlice = createSlice({
     }
 })
 
+export const getSelectedDate = state => state.weather.selectedDate
 export const getMessage = state => state.weather.message
 export const getStatus = state => state.weather.status
 export const getGographicalCoordinates = state => state.locations.geographicalCoordinates

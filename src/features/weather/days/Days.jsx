@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import { setDate, getDays } from '../weatherSlice'
 import { getWeatherByWMO, getLocalDate } from '../../../utils'
 
+import Message from '../../../components/message/Message'
+
 import './days.scss'
 
 
@@ -59,7 +61,8 @@ export default function DaysList() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.1, delay: 0 }}
             className='days-list'>
-                
+            
+            <Message>select desired date:</Message>
             <ul>
                 {listItems}
             </ul>

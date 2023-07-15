@@ -45,7 +45,7 @@ const locationsSlice = createSlice({
             .addCase(fetchLocations.fulfilled, (state, action) => {
                 locationsAdapter.setAll(state, action.payload)
                 state.status = 'idle'
-                state.message = 'Please select location'
+                state.message = 'Select desired location'
             })
             .addCase(fetchLocations.rejected, (state) => {
                 state.status = 'error'

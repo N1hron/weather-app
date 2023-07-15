@@ -11,22 +11,6 @@
         display: flex;
         justify-content: flex-end;
         gap: 15px;
-
-        .message {
-            position: relative;
-            transform: none;
-            top: auto;
-            left: auto;
-            flex-shrink: 0;
-            opacity: 0.8;
-            font-size: 20px;
-            text-transform: lowercase;
-            white-space: nowrap;
-            
-            svg {
-                width: 33px;
-            }
-        }
     }
 
     &__top {
