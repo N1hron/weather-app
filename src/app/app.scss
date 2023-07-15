@@ -52,23 +52,6 @@ p {
     font-weight: 400;
 }
 
-.secondary-text {
-    opacity: 0.8;
-    font-size: 20px;
-    text-transform: lowercase;
-    font-weight: 400;
-
-    &_big {
-        font-size: 30px;
-    }
-}
-
-// svg {
-//     path {
-//         stroke: var(--icon-color);
-//     }
-// }
-
 ul {
     margin: 0;
     padding: 0;
@@ -79,5 +62,20 @@ input {
     &::placeholder {
         opacity: 1;
         color: var(--font-main-color)
+    }
+}
+
+.secondary-text {
+    opacity: 0.8;
+    font-size: 20px;
+    text-transform: lowercase;
+    font-weight: 400;
+
+    &_big {
+        font-size: 30px;
+    }
+
+    &_no-txt-transform {
+        text-transform: none;
     }
 }

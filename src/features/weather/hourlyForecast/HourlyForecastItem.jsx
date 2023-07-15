@@ -8,7 +8,7 @@ export default function HourlyForecastItem({time, icon, temperature, humidity, p
         <li className='hourly__item'>
             <span className='secondary-text'>{time}</span>
             <ul>
-                <li><span className='secondary-text'>{temperature}℃</span><TemperatureIcon className='icon'/></li>
+                <li><span className='secondary-text secondary-text_no-txt-transform'>{temperature}°C</span><TemperatureIcon className='icon'/></li>
                 <li><span className='secondary-text'>{humidity}%</span><HumidityIcon className='icon'/></li>
                 <li><span className='secondary-text'>{precipitation}%</span><PrecipitationIcon className='icon'/></li>
                 <li><span className='secondary-text'>{windSpeed}m/s</span><WindIcon className='icon'/></li>
