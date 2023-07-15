@@ -21,7 +21,7 @@ export default function Weather() {
     const dispatch = useDispatch()
     const {lat, lon} = useSelector(getGographicalCoordinates)
     const weatherStatus = useSelector(getWeatherStatus)
-    console.log(weatherStatus)
+
     // eslint-disable-next-line
     useEffect(getForecast, [lat, lon])
 
