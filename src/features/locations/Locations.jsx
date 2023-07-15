@@ -56,7 +56,7 @@ export default function LocationsList({inputValue, setInputValue}) {
             <ul ref={listRef} className='locations__content'>
                 {listItems.length ? listItems : <p className='locations__message'>No matches</p>}
             </ul>
-            <ScrollControl ref={listRef} step={200}/>
+            {listItems.length ? <ScrollControl ref={listRef} step={200}/> : null}
         </motion.div>
     )
 }

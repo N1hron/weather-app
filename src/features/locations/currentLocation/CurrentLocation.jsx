@@ -17,12 +17,12 @@ export default function CurrentLocation({inputValue}) {
         // eslint-disable-next-line
     }, [city, countryCode])
 
-    const title = (city && country) ? `${city}, ${country}` : ''
+    const location = (city && country) ? `${city}, ${country}` : ''
 
-    if(!title || inputValue) return
+    if(!location || inputValue) return
     return (
         <div className='current-location'> 
-            <h2>{title}</h2>
+            <h2>{location}</h2>
         </div>
     )
 }

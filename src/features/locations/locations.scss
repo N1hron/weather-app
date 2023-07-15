@@ -19,6 +19,13 @@
         overflow: scroll;
         scrollbar-width: none;
         transition: all 0.05s;
+        flex-grow: 1;
+    }
+
+    &__message {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 30px;
     }
 
     &__item {
