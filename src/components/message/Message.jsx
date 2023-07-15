@@ -6,7 +6,7 @@ import { ReactComponent as SpinnerIcon } from '../../assets/icons/spinner.svg'
 import './message.scss'
 
 
-export default function Message({children, type}) {
+export default function Message({children, type, absolute = false}) {
     function setIcon() {
         switch(type) {
             case 'loading':
@@ -22,7 +22,7 @@ export default function Message({children, type}) {
 
     const icon = setIcon()
     return (
-        <div className='message'>
+        <div className={'message' + (absolute ? ' message_absolute' : '')}>
             {icon}
             {children}
         </div>

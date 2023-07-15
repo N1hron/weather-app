@@ -9,5 +9,5 @@ export default function WeatherMessage() {
     const status = useSelector(getStatus),
           message = useSelector(getMessage)
     
-    return <StatusMessage status={status} message={message}/>
+    return <StatusMessage absolute status={status} message={message}/>
 }

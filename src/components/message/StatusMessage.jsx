@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import Message from './Message'
 
 
-export default function StatusMessage({status, message}) {
+export default function StatusMessage({status, message, absolute}) {
     const [isVisible, setIsVisible] = useState(true)
     const timerId = useRef(null)
     
@@ -19,5 +19,5 @@ export default function StatusMessage({status, message}) {
         }
     }, [status])
 
-    return message && isVisible && <Message type={status}>{message}</Message>
+    return message && isVisible && <Message absolute={absolute} type={status}>{message}</Message>
 }
