@@ -39,7 +39,35 @@
         }
     }
 
-    &_sun-colored {
+    &_sun {
+        path {
+            fill: var(--icon-color);
+
+            &:nth-child(1) {
+                fill: transparent;
+            }
+        }
+    }
+
+    &_sunny {
+        path {
+            fill: var(--icon-color);
+
+            &:nth-child(1) {
+                fill: transparent;
+            }
+
+            &:nth-child(6) {
+                fill: transparent;
+            }
+
+            &:nth-child(7) {
+                fill: transparent;
+            }
+        }
+    }
+
+    &_sun_colored {
         path {
             stroke: #ff8329;
             fill: #ff8329;
@@ -50,7 +78,7 @@
         }
     }
 
-    &_sunny-colored {
+    &_sunny_colored {
         path {
             stroke:#ff8329;
             fill: #ff8329;
@@ -71,7 +99,7 @@
         }
     }
 
-    &_cloudy-colored {
+    &_cloudy_colored {
         path {
             &:nth-child(2) {
                 stroke: #ff8329;
@@ -79,8 +107,8 @@
         }
     }
 
-    &_light-rain-colored, 
-    &_heavy-rain-colored {
+    &_light-rain_colored, 
+    &_heavy-rain_colored {
         path {
             stroke: rgb(78, 137, 255);
 
@@ -90,15 +118,21 @@
         }
     }
 
-    &_fog-colored {
+    &_fog_colored {
         path {
+            stroke: #9BABBB;
+
+            &:nth-child(1) {
+                stroke: var(--icon-color);
+            }
+
             &:nth-child(2) {
                 stroke: #ff8329;
             }
         }
     }
 
-    &_thunder-colored {
+    &_thunder_colored {
         path {
             &:nth-child(1) {
                 stroke: #FDD023;
@@ -106,9 +140,9 @@
         }
     }
 
-    &_snow-colored {
+    &_snow_colored {
         path {
-            stroke: #fffafa;
+            stroke: #9BABBB;
 
             &:nth-child(1) {
                 stroke: var(--icon-color);

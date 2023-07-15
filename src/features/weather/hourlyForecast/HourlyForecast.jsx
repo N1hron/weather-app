@@ -22,12 +22,12 @@ export default function HourlyForecast() {
 
         return timestamp.map((timestamp, i) => {
             const {hours, minutes} = getLocalDate(timestamp, utcOffset),
-                  {icon} = getWeatherByWMO(weatherCode[i])
+                  {coloredIcon} = getWeatherByWMO(weatherCode[i])
             
             return <HourlyForecastItem 
                         key={timestamp}
                         time={`${hours}:${minutes}`} 
-                        icon={icon}
+                        icon={coloredIcon}
                         temperature={temperature[i].toFixed(0)} 
                         humidity={humidity[i]} 
                         precipitation={precipitation[i]} 

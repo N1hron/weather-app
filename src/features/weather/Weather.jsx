@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { fetchForecast, getStatus as getWeatherStatus, getGographicalCoordinates, clearDate } from './weatherSlice'
 
@@ -21,6 +22,7 @@ export default function Weather() {
     const {lat, lon} = useSelector(getGographicalCoordinates)
     const weatherStatus = useSelector(getWeatherStatus)
     
+    // eslint-disable-next-line
     useEffect(getForecast, [lat, lon])
 
     function getForecast() {
@@ -30,18 +32,27 @@ export default function Weather() {
         }
     }
     
-    if (weatherStatus !== 'success') return <WeatherMessage/>
     return(
-        <div className='weather'>
-            <Days/>
-            <CurrentWeather/>
-            <UVIndex/>
-            <Sunrise/>
-            <Wind/>
-            <Sunset/>
-            <Precipitation/>
-            <HourlyForecast/>
-        </div>
+        <AnimatePresence>
+            {
+                weatherStatus === 'success' ?
+                <motion.div 
+                    key='weather-motion'
+                    exit={{opacity: 0, scale: 0.8}}
+                    transition={{ duration: 0.1}}
+                    className='weather'>
+
+                    <Days/>
+                    <CurrentWeather/>
+                    <UVIndex/>
+                    <Sunrise/>
+                    <Wind/>
+                    <Sunset/>
+                    <Precipitation/>
+                    <HourlyForecast/>
+                </motion.div> : <WeatherMessage/>
+            }
+        </AnimatePresence>
     )
 }
 

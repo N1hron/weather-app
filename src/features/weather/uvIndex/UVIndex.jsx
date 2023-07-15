@@ -7,7 +7,7 @@ import WeatherCard from '../WeatherCard'
 import './uvIndex.scss'
 
 
-export default function UVIndex({animationDelay}) {
+export default function UVIndex() {
     const uvIndex = useSelector(getUVIndex)
 
     function setDescription() {

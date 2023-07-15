@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 import { getCurrentWeather } from '../weatherSlice'
 import { getWeatherByWMO, hasNullUndefinedOrNan, setHumidityDescription, setWindDescription, setVisibilityDescription } from '../../../utils'
@@ -26,50 +27,55 @@ export default function CurrentWeather() {
             className='current' title='Current Weather' description={description}>
             {
                 !hasNullUndefinedOrNan(data) &&
-                <ul>
-                    <CurrentWeatherItem
-                        caption='temperature'
-                        icon={<TemperatureIcon className='icon'/>}
-                        info={data.temperature}
-                        unit='℃'
-                        description={`feels like ${data.apparentTemperature}℃`}
-                    />
-                    <CurrentWeatherItem
-                        caption='wind'
-                        icon={<WindIcon className='icon'/>}
-                        info={data.windSpeed}
-                        unit='m/s'
-                        description={setWindDescription(data.windSpeed)}
-                    />
-                    <CurrentWeatherItem
-                        caption='humidity'
-                        icon={<HumidityIcon className='icon'/>}
-                        info={data.humidity}
-                        unit='%'
-                        description={setHumidityDescription(data.humidity)}
-                    />
-                    <CurrentWeatherItem
-                        caption='precipitation'
-                        icon={<PrecipitationIcon className='icon'/>}
-                        info={data.precipitation}
-                        unit='mm'
-                        description={`${data.precipitationProbability}% probability`}
-                    />
-                    <CurrentWeatherItem
-                        caption='visibility'
-                        icon={<VisibilityIcon className='icon'/>}
-                        info={(data.visibility / 1000).toFixed(2)}
-                        unit='km'
-                        description={setVisibilityDescription(data.visibility)}
-                    />
-                    <li className='current__item'>
-                        {icon}
-                        <p>
-                            <span>{data.weekday} {data.day}.{data.month}</span><br/>
-                            <span>{data.hours}:{data.minutes} UTC{data.utcString}</span>
-                        </p>
-                    </li>
-                </ul>
+                <>
+                    <Helmet>
+                        <title>Weather App | {description}</title>
+                    </Helmet>
+                    <ul>
+                        <CurrentWeatherItem
+                            caption='temperature'
+                            icon={<TemperatureIcon className='icon'/>}
+                            info={data.temperature}
+                            unit='℃'
+                            description={`feels like ${data.apparentTemperature}℃`}
+                        />
+                        <CurrentWeatherItem
+                            caption='wind'
+                            icon={<WindIcon className='icon'/>}
+                            info={data.windSpeed}
+                            unit='m/s'
+                            description={setWindDescription(data.windSpeed)}
+                        />
+                        <CurrentWeatherItem
+                            caption='humidity'
+                            icon={<HumidityIcon className='icon'/>}
+                            info={data.humidity}
+                            unit='%'
+                            description={setHumidityDescription(data.humidity)}
+                        />
+                        <CurrentWeatherItem
+                            caption='precipitation'
+                            icon={<PrecipitationIcon className='icon'/>}
+                            info={data.precipitation}
+                            unit='mm'
+                            description={`${data.precipitationProbability}% probability`}
+                        />
+                        <CurrentWeatherItem
+                            caption='visibility'
+                            icon={<VisibilityIcon className='icon'/>}
+                            info={(data.visibility / 1000).toFixed(2)}
+                            unit='km'
+                            description={setVisibilityDescription(data.visibility)}
+                        />
+                        <li className='current__item'>
+                            {icon}
+                            <p>
+                                <span>{data.weekday} {data.day}.{data.month}</span><br/>
+                                <span>{data.hours}:{data.minutes} UTC{data.utcString}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </>
             }
         </WeatherCard>
     )
