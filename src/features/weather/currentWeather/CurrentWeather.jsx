@@ -37,7 +37,7 @@ export default function CurrentWeather() {
                             icon={<TemperatureIcon className='icon'/>}
                             info={data.temperature}
                             unit='°C'
-                            description={`feels like ${data.apparentTemperature}℃`}
+                            description={`feels like ${data.apparentTemperature}°C`}
                         />
                         <CurrentWeatherItem
                             caption='wind'
